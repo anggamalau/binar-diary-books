@@ -1,6 +1,6 @@
-# Diary Books - Phase 3 Complete
+# Diary Books - Phase 4 Complete
 
-A web-based diary application with user authentication, interactive calendar interface, and full diary entry management.
+A web-based diary application with user authentication, interactive calendar interface, rich text diary entries, and tagging system.
 
 ## Phase 1 Features ✅
 - **Express.js Application Structure**: Clean SSR setup with proper separation of concerns
@@ -43,6 +43,33 @@ A web-based diary application with user authentication, interactive calendar int
 - **Database Schema**: Proper diary_entries table with user relationships and indexing
 - **Form Validation**: Server-side validation for title and content requirements
 - **Breadcrumb Navigation**: Clear navigation paths throughout the entry management system
+
+## Phase 4 Features ✅
+- **WYSIWYG Rich Text Editor**: 
+  - Quill.js integration for rich content creation
+  - Support for headers, bold, italic, underline, strike-through
+  - Lists (ordered and unordered), blockquotes, and code blocks
+  - Link and image embedding capabilities
+  - Clean and intuitive toolbar interface
+- **Tags System**:
+  - Comma-separated tags for entry categorization
+  - Tag display as clickable badges on entries
+  - View all entries by specific tag
+  - Tag filtering and navigation
+  - Visual tag indicators on entry cards
+- **Enhanced Entry Display**:
+  - Rich HTML content rendering
+  - Proper formatting for headers, lists, and quotes
+  - Image display support
+  - Improved typography and spacing
+- **UI/UX Enhancements**:
+  - Card hover effects and transitions
+  - Enhanced entry preview with HTML stripping
+  - Better visual hierarchy with improved styling
+  - Responsive Quill editor interface
+  - Tag badges with hover effects
+- **Multiple Entries Per Day**: Already supported from Phase 3
+- **Improved Entry Cards**: Better visual design with shadows and transitions
 
 ## Installation & Setup
 
@@ -98,10 +125,11 @@ diary-books/
 │   │   ├── login.ejs      # Login page
 │   │   └── register.ejs   # Registration page
 │   └── entries/
-│       ├── create.ejs     # New entry creation form
-│       ├── edit.ejs       # Entry editing form
+│       ├── create.ejs     # New entry creation form (with Quill editor)
+│       ├── edit.ejs       # Entry editing form (with Quill editor)
 │       ├── view.ejs       # Individual entry view
-│       └── view-date.ejs  # Date-based entry listing
+│       ├── view-date.ejs  # Date-based entry listing
+│       └── view-tag.ejs   # Tag-based entry listing
 ├── public/
 │   ├── css/style.css      # Application styles
 │   └── js/main.js         # Client-side JavaScript
@@ -118,12 +146,15 @@ The following environment variables can be configured in `.env`:
 - `DB_PATH`: Path to SQLite database file
 - `NODE_ENV`: Environment mode (development/production)
 
-## Next Steps - Phase 4
-- Multiple entries per day support (already implemented)
-- WYSIWYG rich text editor for enhanced content editing
-- Tags system for entry categorization
-- Advanced entry search and filtering
-- Enhanced UI/UX improvements
+## Next Steps - Phase 5 (Polish & Optimization)
+- Comprehensive error handling improvements
+- Advanced input validation
+- Loading states and feedback animations
+- Performance optimizations
+- Cross-browser compatibility testing
+- Search functionality for entries
+- Export functionality for diary entries
+- User preferences and settings
 
 ## Security Features
 - Password hashing with bcrypt (12 salt rounds)
@@ -151,3 +182,19 @@ The following environment variables can be configured in `.env`:
 - **User Isolation**: Each user can only access their own entries with proper authorization
 - **Breadcrumb Navigation**: Clear navigation paths with back buttons and breadcrumbs
 - **Action Confirmations**: Delete confirmations to prevent accidental data loss
+
+## Rich Text Editing Features
+- **WYSIWYG Editor**: Quill.js for intuitive rich text editing
+- **Formatting Options**: Headers, bold, italic, underline, strike-through
+- **Content Blocks**: Lists, blockquotes, code blocks
+- **Media Support**: Links and images
+- **Clean Toolbar**: Organized editing tools with clear icons
+- **HTML Storage**: Content saved as clean HTML in database
+
+## Tagging System
+- **Flexible Tags**: Add multiple tags to any entry
+- **Tag Navigation**: Click tags to view all entries with that tag
+- **Visual Indicators**: Tags displayed as badges on entries
+- **Tag Filtering**: Dedicated tag view page
+- **Tag Management**: Easy to add, edit, or remove tags from entries
+- **Comma-Separated**: Simple tag input format

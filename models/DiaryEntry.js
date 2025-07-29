@@ -7,6 +7,7 @@ class DiaryEntry {
     this.title = data.title;
     this.content = data.content;
     this.entry_date = data.entry_date;
+    this.tags = data.tags;
     this.created_at = data.created_at;
     this.updated_at = data.updated_at;
   }
@@ -14,8 +15,8 @@ class DiaryEntry {
   static async create(entryData) {
     try {
       const result = await database.run(
-        'INSERT INTO diary_entries (user_id, title, content, entry_date) VALUES (?, ?, ?, ?)',
-        [entryData.user_id, entryData.title, entryData.content, entryData.entry_date]
+        'INSERT INTO diary_entries (user_id, title, content, entry_date, tags) VALUES (?, ?, ?, ?, ?)',
+        [entryData.user_id, entryData.title, entryData.content, entryData.entry_date, entryData.tags || null]
       );
       
       const newEntry = await DiaryEntry.findById(result.id);
@@ -105,8 +106,8 @@ class DiaryEntry {
   async update(updateData) {
     try {
       const result = await database.run(
-        'UPDATE diary_entries SET title = ?, content = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ? AND user_id = ?',
-        [updateData.title, updateData.content, this.id, this.user_id]
+        'UPDATE diary_entries SET title = ?, content = ?, tags = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ? AND user_id = ?',
+        [updateData.title, updateData.content, updateData.tags || null, this.id, this.user_id]
       );
       
       if (result.changes === 0) {
@@ -142,6 +143,22 @@ class DiaryEntry {
     }
   }
 
+  static async findByUserAndTag(userId, tag) {
+    try {
+      const rows = await database.all(
+        `SELECT * FROM diary_entries 
+         WHERE user_id = ? AND 
+         (',' || tags || ',') LIKE ? 
+         ORDER BY entry_date DESC, created_at DESC`,
+        [userId, `%,${tag},%`]
+      );
+      return rows.map(row => new DiaryEntry(row));
+    } catch (error) {
+      console.error('Error finding diary entries by tag:', error);
+      throw error;
+    }
+  }
+
   toJSON() {
     return {
       id: this.id,
@@ -149,6 +166,7 @@ class DiaryEntry {
       title: this.title,
       content: this.content,
       entry_date: this.entry_date,
+      tags: this.tags,
       created_at: this.created_at,
       updated_at: this.updated_at
     };
@@ -173,6 +191,25 @@ class DiaryEntry {
       hour: '2-digit',
       minute: '2-digit'
     });
+  }
+
+  getTagsArray() {
+    if (!this.tags || this.tags.trim() === '') {
+      return [];
+    }
+    return this.tags.split(',').map(tag => tag.trim()).filter(tag => tag.length > 0);
+  }
+
+  static formatTagsForStorage(tagsString) {
+    if (!tagsString || tagsString.trim() === '') {
+      return null;
+    }
+    // Split by comma, trim each tag, remove empty ones, and join back
+    const tags = tagsString.split(',')
+      .map(tag => tag.trim())
+      .filter(tag => tag.length > 0)
+      .join(',');
+    return tags || null;
   }
 }
 

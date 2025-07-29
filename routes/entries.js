@@ -8,6 +8,28 @@ const router = express.Router();
 // All routes require authentication
 router.use(authMiddleware);
 
+// View entries by tag
+router.get('/tag/:tag', async (req, res) => {
+  try {
+    const tag = decodeURIComponent(req.params.tag);
+    const entries = await DiaryEntry.findByUserAndTag(req.user.id, tag);
+    
+    res.render('entries/view-tag', {
+      title: `Entries tagged: ${tag}`,
+      user: req.user,
+      entries: entries,
+      tag: tag
+    });
+  } catch (error) {
+    console.error('Error viewing entries by tag:', error);
+    res.render('error', {
+      title: 'Error',
+      message: 'Failed to load entries',
+      error: {}
+    });
+  }
+});
+
 // View entries for a specific date
 router.get('/date/:date', async (req, res) => {
   try {
@@ -82,7 +104,8 @@ router.post('/create', [
       user_id: req.user.id,
       title: req.body.title,
       content: req.body.content,
-      entry_date: req.body.entry_date
+      entry_date: req.body.entry_date,
+      tags: DiaryEntry.formatTagsForStorage(req.body.tags)
     });
 
     res.redirect(`/entries/date/${req.body.entry_date}?success=Entry created successfully`);
@@ -187,7 +210,8 @@ router.post('/:id/update', [
 
     await entry.update({
       title: req.body.title,
-      content: req.body.content
+      content: req.body.content,
+      tags: DiaryEntry.formatTagsForStorage(req.body.tags)
     });
 
     res.redirect(`/entries/${entry.id}?success=Entry updated successfully`);

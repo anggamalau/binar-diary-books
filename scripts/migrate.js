@@ -49,6 +49,13 @@ const migrations = [
       CREATE INDEX IF NOT EXISTS idx_diary_entries_user_date 
       ON diary_entries (user_id, entry_date)
     `
+  },
+  {
+    version: 5,
+    description: 'Add tags column to diary_entries table',
+    sql: `
+      ALTER TABLE diary_entries ADD COLUMN tags TEXT
+    `
   }
 ];
 
