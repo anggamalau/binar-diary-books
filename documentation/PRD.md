@@ -4,46 +4,94 @@
 A web-based diary application allowing users to create, manage, and organize daily diary entries through an intuitive calendar interface.
 
 ## Technical Architecture
-- **Structure**: Monorepo with clean separation of concerns
+- **Structure**: Common SSR structure with clean separation of concerns
 - **Principles**: Clean code and SOLID principles
-- **Frontend**: Responsive web application using Bootstrap
-- **Backend**: Express.js REST API
+- **Application**: Express.js SSR application with EJS templating engine
 - **Database**: SQLite with migration support
 - **Authentication**: JWT-based authentication
 
-## Core Features
+## Implementation Phases
 
-### 1. User Authentication
-- **Login Page**: Email and password authentication
-- **Registration Page**: 
-  - Email (required)
-  - Username (required)
-  - Birth date (required)
-  - Gender (required)
-  - Password (required)
-- **Security**: JWT token-based authentication
-- **Validation**: Input validation and error handling
+### Phase 1: Foundation & Authentication
+**Goal**: Basic app setup with user registration and login
 
-### 2. Calendar Dashboard
-- **Home Page**: Full calendar view of current month (login required)
-- **Navigation**: Month/year navigation
-- **Day Selection**: Clickable calendar days
-- **Visual Indicators**: Show days with existing entries
+- **Project Setup**:
+  - Express.js application structure
+  - EJS templating engine configuration
+  - SQLite database initialization
+  - Basic routing setup
 
-### 3. Diary Entry Management
-- **Multiple Entries**: Multiple diary entries per day
-- **Entry Fields**:
-  - Title (required)
-  - Content (WYSIWYG editor)
-  - Tags (optional, comma-separated)
-- **Operations**: Create, read, update, delete entries
-- **Editor**: Rich text WYSIWYG editor for content
+- **User Authentication**:
+  - User registration page with form validation
+  - Login page with email/password authentication
+  - JWT token-based authentication middleware
+  - Password hashing and security
+  - Basic error handling and validation
 
-### 4. Data Management
-- **Database**: SQLite with proper schema
-- **Migrations**: Database migration files for schema management
-- **Data Validation**: Server-side input validation
-- **Error Handling**: Comprehensive error handling and user feedback
+- **Database Schema**:
+  - Users table with required fields
+  - Database migration setup
+  - Connection and query helpers
+
+### Phase 2: Calendar Interface
+**Goal**: Interactive calendar dashboard for navigation
+
+- **Calendar Dashboard**:
+  - Protected home page (login required)
+  - Full calendar view of current month
+  - Month/year navigation controls
+  - Clickable calendar days
+  - Basic responsive design
+
+- **Authentication Integration**:
+  - Route protection middleware
+  - User session management
+  - Logout functionality
+
+### Phase 3: Basic Diary Entries
+**Goal**: Core diary entry functionality
+
+- **Entry Management**:
+  - Create new diary entries
+  - Simple text-based content (no WYSIWYG yet)
+  - Title and content fields
+  - Save entries to database
+  - View existing entries
+
+- **Database Schema**:
+  - Diary entries table
+  - User-entry relationships
+  - Date-based entry organization
+
+### Phase 4: Enhanced Entry Features
+**Goal**: Rich editing and multiple entries per day
+
+- **Advanced Entry Features**:
+  - Multiple entries per day support
+  - WYSIWYG editor for rich content
+  - Tags system (optional, comma-separated)
+  - Entry editing and deletion
+  - Improved entry display
+
+- **Visual Indicators**:
+  - Show calendar days with existing entries
+  - Entry count indicators
+  - Enhanced UI/UX
+
+### Phase 5: Polish & Optimization
+**Goal**: Production-ready application
+
+- **User Experience**:
+  - Comprehensive error handling
+  - Input validation improvements
+  - Loading states and feedback
+  - Mobile responsiveness optimization
+
+- **Technical Improvements**:
+  - Code refactoring and optimization
+  - Security enhancements
+  - Performance optimizations
+  - Cross-browser compatibility testing
 
 ## User Flow
 1. User visits application

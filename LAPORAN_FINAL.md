@@ -20,3 +20,15 @@ the application has a home page that can be accessed after logged in that shows 
 - diary entry is simple text with title, tags, and content using a WYSIWYG editor
 the project has migration files for the SQLite database
 ```
+
+**UPDATE THE PRD**
+```sh
+update @documentation/PRD.md:
+express js SSR with ejs templating
+use common ssr structure instead of mono-repo structure
+```
+
+```sh
+update @documentation/PRD.md:
+separate feature implementation incrementaly
+```
