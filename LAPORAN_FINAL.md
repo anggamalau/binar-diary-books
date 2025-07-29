@@ -97,3 +97,8 @@ Cannot log after tests are done. Did you forget to wait for something async in y
 ```sh
 execute Option 2: Make Database Close Synchronous in Tests is the best option.
 ```
+
+```sh
+based on @documentation/unit-testing-plan.md
+implement unit testing plan phase 2
+```
