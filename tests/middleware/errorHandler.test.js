@@ -15,10 +15,10 @@ describe('Error Handler Middleware', () => {
       render: jest.fn()
     };
     next = jest.fn();
-    
+
     // Mock console.error to avoid test output noise
     jest.spyOn(console, 'error').mockImplementation();
-    
+
     process.env.NODE_ENV = 'development';
   });
 
@@ -370,7 +370,7 @@ describe('Error Handler Middleware', () => {
 
     test('should work with different request objects', () => {
       const customReq = { url: '/nonexistent', method: 'GET' };
-      
+
       notFoundHandler(customReq, res, next);
 
       expect(next).toHaveBeenCalledWith(expect.objectContaining({

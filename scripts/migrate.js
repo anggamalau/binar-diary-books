@@ -62,7 +62,7 @@ const migrations = [
 async function runMigrations() {
   try {
     await database.connect();
-    
+
     await database.run(`
       CREATE TABLE IF NOT EXISTS migration_history (
         version INTEGER PRIMARY KEY,

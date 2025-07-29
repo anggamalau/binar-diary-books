@@ -31,9 +31,9 @@ describe('Security Middleware', () => {
       locals: {}
     };
     next = jest.fn();
-    
+
     jest.clearAllMocks();
-    
+
     // Clear the loginAttempts Map between tests
     const security = require('../../middleware/security');
     if (security.loginAttempts) {
@@ -55,16 +55,16 @@ describe('Security Middleware', () => {
     test('should set Content Security Policy header', () => {
       securityHeaders(req, res, next);
 
-      expect(res.setHeader).toHaveBeenCalledWith('Content-Security-Policy', 
-        "default-src 'self'; " +
-        "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdn.quilljs.com https://cdnjs.cloudflare.com; " +
-        "style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdn.quilljs.com https://cdnjs.cloudflare.com; " +
-        "font-src 'self' https://cdnjs.cloudflare.com; " +
-        "img-src 'self' data: https:; " +
-        "connect-src 'self'; " +
-        "frame-src 'none'; " +
-        "object-src 'none'; " +
-        "base-uri 'self';"
+      expect(res.setHeader).toHaveBeenCalledWith('Content-Security-Policy',
+        'default-src \'self\'; ' +
+        'script-src \'self\' \'unsafe-inline\' https://cdn.jsdelivr.net https://cdn.quilljs.com https://cdnjs.cloudflare.com; ' +
+        'style-src \'self\' \'unsafe-inline\' https://cdn.jsdelivr.net https://cdn.quilljs.com https://cdnjs.cloudflare.com; ' +
+        'font-src \'self\' https://cdnjs.cloudflare.com; ' +
+        'img-src \'self\' data: https:; ' +
+        'connect-src \'self\'; ' +
+        'frame-src \'none\'; ' +
+        'object-src \'none\'; ' +
+        'base-uri \'self\';'
       );
     });
 
@@ -102,7 +102,7 @@ describe('Security Middleware', () => {
 
     test('should allow first request from new IP', () => {
       limiter = rateLimiter(5, 15 * 60 * 1000);
-      
+
       limiter(req, res, next);
 
       expect(next).toHaveBeenCalled();
@@ -111,7 +111,7 @@ describe('Security Middleware', () => {
 
     test('should allow requests within rate limit', () => {
       limiter = rateLimiter(5, 15 * 60 * 1000);
-      
+
       // Make 4 requests
       for (let i = 0; i < 4; i++) {
         limiter(req, res, next);
@@ -123,14 +123,14 @@ describe('Security Middleware', () => {
 
     test('should block requests exceeding rate limit', () => {
       limiter = rateLimiter(3, 15 * 60 * 1000); // Max 3 attempts
-      
+
       // Make 3 allowed requests
       for (let i = 0; i < 3; i++) {
         limiter(req, res, next);
       }
-      
+
       jest.clearAllMocks();
-      
+
       // 4th request should be blocked
       limiter(req, res, next);
 
@@ -147,16 +147,16 @@ describe('Security Middleware', () => {
 
     test('should reset attempts after time window expires', () => {
       limiter = rateLimiter(2, 15 * 60 * 1000); // Max 2 attempts, 15 min window
-      
+
       // Make 2 requests
       limiter(req, res, next);
       limiter(req, res, next);
-      
+
       // Advance time past the window
       jest.advanceTimersByTime(16 * 60 * 1000); // 16 minutes
-      
+
       jest.clearAllMocks();
-      
+
       // Should allow request again
       limiter(req, res, next);
 
@@ -166,14 +166,14 @@ describe('Security Middleware', () => {
 
     test('should use different counters for different IPs', () => {
       limiter = rateLimiter(2, 15 * 60 * 1000);
-      
+
       // First IP makes 2 requests
       req.ip = '192.168.1.1';
       limiter(req, res, next);
       limiter(req, res, next);
-      
+
       jest.clearAllMocks();
-      
+
       // Second IP should be allowed
       req.ip = '192.168.1.2';
       limiter(req, res, next);
@@ -184,15 +184,15 @@ describe('Security Middleware', () => {
 
     test('should use connection.remoteAddress as fallback for IP', () => {
       limiter = rateLimiter(2, 15 * 60 * 1000);
-      
+
       req.ip = undefined;
       req.connection.remoteAddress = '10.0.0.1';
-      
+
       limiter(req, res, next);
       limiter(req, res, next);
-      
+
       jest.clearAllMocks();
-      
+
       // Third request should be blocked
       limiter(req, res, next);
 
@@ -201,14 +201,14 @@ describe('Security Middleware', () => {
 
     test('should use default values for maxAttempts and windowMs', () => {
       limiter = rateLimiter(); // Use defaults: 5 attempts, 15 min window
-      
+
       // Make 5 requests (should all pass)
       for (let i = 0; i < 5; i++) {
         limiter(req, res, next);
       }
-      
+
       jest.clearAllMocks();
-      
+
       // 6th request should be blocked
       limiter(req, res, next);
 
@@ -217,11 +217,11 @@ describe('Security Middleware', () => {
 
     test('should handle custom maxAttempts and windowMs', () => {
       limiter = rateLimiter(1, 5 * 60 * 1000); // Max 1 attempt, 5 min window
-      
+
       limiter(req, res, next);
-      
+
       jest.clearAllMocks();
-      
+
       // Second request should be blocked
       limiter(req, res, next);
 
@@ -420,7 +420,7 @@ describe('Security Middleware', () => {
     });
 
     test('should preserve existing session data', () => {
-      req.session = { 
+      req.session = {
         userId: 123,
         loginTime: '2024-01-01T10:00:00Z',
         preferences: { theme: 'dark' }
@@ -440,12 +440,12 @@ describe('Security Middleware', () => {
       // First generate CSRF token
       req.session = {};
       generateCsrfToken(req, res, next);
-      
+
       const generatedToken = req.session.csrfToken;
       expect(generatedToken).toBeDefined();
-      
+
       jest.clearAllMocks();
-      
+
       // Then protect with CSRF
       req.method = 'POST';
       req.body = { _csrf: generatedToken };
@@ -457,19 +457,19 @@ describe('Security Middleware', () => {
 
     test('should handle rate limiting with security headers', () => {
       const limiter = rateLimiter(1, 15 * 60 * 1000);
-      
+
       // First request - should set headers and pass
       securityHeaders(req, res, next);
       expect(res.setHeader).toHaveBeenCalled();
-      
+
       jest.clearAllMocks();
-      
+
       // First rate limited request - should pass
       limiter(req, res, next);
       expect(next).toHaveBeenCalled();
-      
+
       jest.clearAllMocks();
-      
+
       // Second rate limited request - should be blocked
       limiter(req, res, next);
       expect(res.status).toHaveBeenCalledWith(429);
@@ -479,23 +479,23 @@ describe('Security Middleware', () => {
       // 1. Set security headers
       securityHeaders(req, res, next);
       expect(res.setHeader).toHaveBeenCalled();
-      
+
       jest.clearAllMocks();
-      
+
       // 2. Generate CSRF token
       req.session = {};
       generateCsrfToken(req, res, next);
       const token = req.session.csrfToken;
-      
+
       jest.clearAllMocks();
-      
+
       // 3. Check rate limiting
       const limiter = rateLimiter();
       limiter(req, res, next);
       expect(next).toHaveBeenCalled();
-      
+
       jest.clearAllMocks();
-      
+
       // 4. Validate CSRF for POST request
       req.method = 'POST';
       req.body = { _csrf: token, data: 'test' };
@@ -507,14 +507,14 @@ describe('Security Middleware', () => {
       // Generate token
       req.session = {};
       generateCsrfToken(req, res, next);
-      
+
       jest.clearAllMocks();
-      
+
       // Try to use wrong token
       req.method = 'POST';
       req.body = { _csrf: 'wrong-token' };
       csrfProtection(req, res, next);
-      
+
       expect(res.status).toHaveBeenCalledWith(403);
       expect(res.render).toHaveBeenCalledWith('error', expect.objectContaining({
         status: 403,

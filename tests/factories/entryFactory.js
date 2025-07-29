@@ -18,7 +18,7 @@ class EntryFactory {
     for (let i = 0; i < count; i++) {
       const date = new Date('2024-01-15');
       date.setDate(date.getDate() + i);
-      
+
       entries.push(await this.create(userId, {
         title: `Test Entry ${i + 1}`,
         content: `This is test diary entry number ${i + 1}.`,
@@ -44,7 +44,7 @@ class EntryFactory {
     const entries = [];
     const start = new Date(startDate);
     const end = new Date(endDate);
-    let current = new Date(start);
+    const current = new Date(start);
     let counter = 1;
 
     while (current <= end) {
@@ -54,11 +54,11 @@ class EntryFactory {
         entry_date: current.toISOString().split('T')[0],
         ...overrides
       }));
-      
+
       current.setDate(current.getDate() + 1);
       counter++;
     }
-    
+
     return entries;
   }
 }

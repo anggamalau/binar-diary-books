@@ -7,20 +7,20 @@ const securityHeaders = (req, res, next) => {
   res.setHeader('X-Frame-Options', 'DENY');
   res.setHeader('X-XSS-Protection', '1; mode=block');
   res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
-  
+
   // Content Security Policy
-  res.setHeader('Content-Security-Policy', 
-    "default-src 'self'; " +
-    "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdn.quilljs.com https://cdnjs.cloudflare.com; " +
-    "style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdn.quilljs.com https://cdnjs.cloudflare.com; " +
-    "font-src 'self' https://cdnjs.cloudflare.com; " +
-    "img-src 'self' data: https:; " +
-    "connect-src 'self'; " +
-    "frame-src 'none'; " +
-    "object-src 'none'; " +
-    "base-uri 'self';"
+  res.setHeader('Content-Security-Policy',
+    'default-src \'self\'; ' +
+    'script-src \'self\' \'unsafe-inline\' https://cdn.jsdelivr.net https://cdn.quilljs.com https://cdnjs.cloudflare.com; ' +
+    'style-src \'self\' \'unsafe-inline\' https://cdn.jsdelivr.net https://cdn.quilljs.com https://cdnjs.cloudflare.com; ' +
+    'font-src \'self\' https://cdnjs.cloudflare.com; ' +
+    'img-src \'self\' data: https:; ' +
+    'connect-src \'self\'; ' +
+    'frame-src \'none\'; ' +
+    'object-src \'none\'; ' +
+    'base-uri \'self\';'
   );
-  
+
   next();
 };
 
@@ -31,20 +31,20 @@ const rateLimiter = (maxAttempts = 5, windowMs = 15 * 60 * 1000) => {
   return (req, res, next) => {
     const ip = req.ip || req.connection.remoteAddress;
     const now = Date.now();
-    
+
     if (!loginAttempts.has(ip)) {
       loginAttempts.set(ip, { count: 1, resetTime: now + windowMs });
       return next();
     }
-    
+
     const attempts = loginAttempts.get(ip);
-    
+
     if (now > attempts.resetTime) {
       attempts.count = 1;
       attempts.resetTime = now + windowMs;
       return next();
     }
-    
+
     if (attempts.count >= maxAttempts) {
       return res.status(429).render('error', {
         title: 'Too Many Attempts',
@@ -54,7 +54,7 @@ const rateLimiter = (maxAttempts = 5, windowMs = 15 * 60 * 1000) => {
         user: null
       });
     }
-    
+
     attempts.count++;
     next();
   };
@@ -65,10 +65,10 @@ const csrfProtection = (req, res, next) => {
   if (req.method === 'GET' || req.method === 'HEAD' || req.method === 'OPTIONS') {
     return next();
   }
-  
+
   const token = req.body._csrf || req.headers['x-csrf-token'];
   const sessionToken = req.session && req.session.csrfToken;
-  
+
   if (!token || !sessionToken || token !== sessionToken) {
     return res.status(403).render('error', {
       title: 'Forbidden',
@@ -78,7 +78,7 @@ const csrfProtection = (req, res, next) => {
       user: req.user || null
     });
   }
-  
+
   next();
 };
 

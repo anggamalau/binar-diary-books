@@ -47,7 +47,7 @@ router.get('/dashboard', authMiddleware, async (req, res) => {
 router.get('/calendar/:year/:month', authMiddleware, async (req, res) => {
   try {
     const parsed = parseMonthYear(req.params.month, req.params.year);
-    
+
     if (!parsed) {
       return res.redirect('/dashboard');
     }

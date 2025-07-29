@@ -18,7 +18,7 @@ class DiaryEntry {
         'INSERT INTO diary_entries (user_id, title, content, entry_date, tags) VALUES (?, ?, ?, ?, ?)',
         [entryData.user_id, entryData.title, entryData.content, entryData.entry_date, entryData.tags || null]
       );
-      
+
       const newEntry = await DiaryEntry.findById(result.id);
       return newEntry;
     } catch (error) {
@@ -70,12 +70,12 @@ class DiaryEntry {
     try {
       let sql = 'SELECT * FROM diary_entries WHERE user_id = ? ORDER BY entry_date DESC, created_at DESC';
       const params = [userId];
-      
+
       if (limit) {
         sql += ' LIMIT ? OFFSET ?';
         params.push(limit, offset);
       }
-      
+
       const rows = await database.all(sql, params);
       return rows.map(row => new DiaryEntry(row));
     } catch (error) {
@@ -90,12 +90,12 @@ class DiaryEntry {
         'SELECT entry_date, COUNT(*) as count FROM diary_entries WHERE user_id = ? AND entry_date BETWEEN ? AND ? GROUP BY entry_date',
         [userId, startDate, endDate]
       );
-      
+
       const counts = {};
       rows.forEach(row => {
         counts[row.entry_date] = row.count;
       });
-      
+
       return counts;
     } catch (error) {
       console.error('Error getting entry counts:', error);
@@ -109,15 +109,15 @@ class DiaryEntry {
         'UPDATE diary_entries SET title = ?, content = ?, tags = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ? AND user_id = ?',
         [updateData.title, updateData.content, updateData.tags || null, this.id, this.user_id]
       );
-      
+
       if (result.changes === 0) {
         throw new Error('Entry not found or unauthorized');
       }
-      
+
       // Refresh the instance with updated data
       const updatedEntry = await DiaryEntry.findById(this.id);
       Object.assign(this, updatedEntry);
-      
+
       return this;
     } catch (error) {
       console.error('Error updating diary entry:', error);
@@ -131,11 +131,11 @@ class DiaryEntry {
         'DELETE FROM diary_entries WHERE id = ? AND user_id = ?',
         [this.id, this.user_id]
       );
-      
+
       if (result.changes === 0) {
         throw new Error('Entry not found or unauthorized');
       }
-      
+
       return true;
     } catch (error) {
       console.error('Error deleting diary entry:', error);
@@ -171,14 +171,14 @@ class DiaryEntry {
         )
         ORDER BY entry_date DESC, created_at DESC
       `;
-      
+
       const params = [userId, search, search, search];
-      
+
       if (limit) {
         sql += ' LIMIT ? OFFSET ?';
         params.push(limit, offset);
       }
-      
+
       const rows = await database.all(sql, params);
       return rows.map(row => new DiaryEntry(row));
     } catch (error) {

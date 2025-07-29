@@ -7,7 +7,7 @@ class ResponseHelper {
   static expectErrorResponse(response, statusCode, message = null) {
     expect(response.status).toBe(statusCode);
     expect(response.body).toHaveProperty('error');
-    
+
     if (message) {
       expect(response.body.error).toContain(message);
     }
@@ -16,7 +16,7 @@ class ResponseHelper {
   static expectValidationError(response, field = null) {
     expect(response.status).toBe(400);
     expect(response.body).toHaveProperty('errors');
-    
+
     if (field) {
       expect(response.body.errors).toEqual(
         expect.arrayContaining([

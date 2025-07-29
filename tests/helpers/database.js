@@ -19,7 +19,7 @@ class DatabaseHelper {
         updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
       )
     `);
-    
+
     await database.run(`
       CREATE TABLE IF NOT EXISTS diary_entries (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -33,7 +33,7 @@ class DatabaseHelper {
         FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
       )
     `);
-    
+
     await database.run(`
       CREATE INDEX IF NOT EXISTS idx_diary_entries_user_date 
       ON diary_entries (user_id, entry_date)

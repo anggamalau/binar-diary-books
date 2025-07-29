@@ -44,7 +44,7 @@ class User {
         'INSERT INTO users (email, password, name) VALUES (?, ?, ?)',
         [userData.email, hashedPassword, userData.name]
       );
-      
+
       const newUser = await User.findById(result.id);
       return newUser;
     } catch (error) {

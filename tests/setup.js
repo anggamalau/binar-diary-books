@@ -9,7 +9,7 @@ process.env.JWT_SECRET = 'test-jwt-secret';
 beforeAll(async () => {
   // Connect to in-memory database
   await database.connect();
-  
+
   // Create tables for testing
   await database.run(`
     CREATE TABLE IF NOT EXISTS users (
@@ -21,7 +21,7 @@ beforeAll(async () => {
       updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
     )
   `);
-  
+
   await database.run(`
     CREATE TABLE IF NOT EXISTS diary_entries (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -35,7 +35,7 @@ beforeAll(async () => {
       FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
     )
   `);
-  
+
   await database.run(`
     CREATE INDEX IF NOT EXISTS idx_diary_entries_user_date 
     ON diary_entries (user_id, entry_date)

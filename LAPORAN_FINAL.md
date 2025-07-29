@@ -107,3 +107,28 @@ implement unit testing plan phase 2
 based on @documentation/unit-testing-plan.md
 implement unit testing plan phase 3
 ```
+
+**IMPLEMENT LINT**
+```sh
+implement eslint for coding style and code quality
+```
+
+Muncul warning ketika menjalan lint
+```sh
+find the reason that causing this warning:
+(node:62646) ESLintIgnoreWarning: The ".eslintignore" file is no longer supported. Switch to using the "ignores" property in "eslint.config.js": https://eslint.org/docs/latest/use/configure/migration-guide#ignoring-files
+(Use `node --trace-warnings ...` to show where the warning was created)
+```
+
+npm run lint:fix tidak memperbaiki code secara otomasi
+```sh
+npm run lint:fix do not auto-fixing the code, what is causing that
+```
+
+Beberapa error dan warning tidak dapat di-fixing otomatis, perlu dilakukan manual edit
+```sh
+It cannot auto-fix:
+- ❌ Unused variables - Requires manual decision (remove/rename with _ prefix)
+- ❌ Console statements - Requires manual review to keep/remove
+- ❌ Logic errors - Need human judgment
+```

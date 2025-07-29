@@ -15,7 +15,7 @@ router.get('/search', async (req, res) => {
     const page = parseInt(req.query.page) || 1;
     const limit = 12;
     const offset = (page - 1) * limit;
-    
+
     if (!searchTerm.trim()) {
       return res.render('entries/search', {
         title: 'Search Entries',
@@ -26,14 +26,14 @@ router.get('/search', async (req, res) => {
         hasMore: false
       });
     }
-    
+
     const entries = await DiaryEntry.searchByUser(req.user.id, searchTerm, limit + 1, offset);
     const hasMore = entries.length > limit;
-    
+
     if (hasMore) {
       entries.pop();
     }
-    
+
     res.render('entries/search', {
       title: 'Search Results',
       user: req.user,
@@ -57,7 +57,7 @@ router.get('/tag/:tag', async (req, res) => {
   try {
     const tag = decodeURIComponent(req.params.tag);
     const entries = await DiaryEntry.findByUserAndTag(req.user.id, tag);
-    
+
     res.render('entries/view-tag', {
       title: `Entries tagged: ${tag}`,
       user: req.user,
@@ -78,7 +78,7 @@ router.get('/tag/:tag', async (req, res) => {
 router.get('/date/:date', async (req, res) => {
   try {
     const date = req.params.date;
-    
+
     // Validate date format (YYYY-MM-DD)
     const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
     if (!dateRegex.test(date)) {
@@ -86,7 +86,7 @@ router.get('/date/:date', async (req, res) => {
     }
 
     const entries = await DiaryEntry.findByUserAndDate(req.user.id, date);
-    
+
     res.render('entries/view-date', {
       title: 'Diary Entries',
       user: req.user,
@@ -109,7 +109,7 @@ router.get('/date/:date', async (req, res) => {
 // Create new entry form
 router.get('/new/:date', (req, res) => {
   const date = req.params.date;
-  
+
   // Validate date format
   const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
   if (!dateRegex.test(date)) {
@@ -132,7 +132,7 @@ router.post('/create', [
 ], async (req, res) => {
   try {
     const errors = validationResult(req);
-    
+
     if (!errors.isEmpty()) {
       return res.render('entries/create', {
         title: 'New Diary Entry',
@@ -170,7 +170,7 @@ router.post('/create', [
 router.get('/:id', async (req, res) => {
   try {
     const entry = await DiaryEntry.findById(req.params.id);
-    
+
     if (!entry || entry.user_id !== req.user.id) {
       return res.status(404).render('error', {
         title: '404 Not Found',
@@ -200,7 +200,7 @@ router.get('/:id', async (req, res) => {
 router.get('/:id/edit', async (req, res) => {
   try {
     const entry = await DiaryEntry.findById(req.params.id);
-    
+
     if (!entry || entry.user_id !== req.user.id) {
       return res.status(404).render('error', {
         title: '404 Not Found',
@@ -231,7 +231,7 @@ router.post('/:id/update', [
 ], async (req, res) => {
   try {
     const entry = await DiaryEntry.findById(req.params.id);
-    
+
     if (!entry || entry.user_id !== req.user.id) {
       return res.status(404).render('error', {
         title: '404 Not Found',
@@ -241,7 +241,7 @@ router.post('/:id/update', [
     }
 
     const errors = validationResult(req);
-    
+
     if (!errors.isEmpty()) {
       return res.render('entries/edit', {
         title: 'Edit Diary Entry',
@@ -276,7 +276,7 @@ router.post('/:id/update', [
 router.post('/:id/delete', async (req, res) => {
   try {
     const entry = await DiaryEntry.findById(req.params.id);
-    
+
     if (!entry || entry.user_id !== req.user.id) {
       return res.status(404).render('error', {
         title: '404 Not Found',

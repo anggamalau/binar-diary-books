@@ -11,10 +11,10 @@ describe('User Model', () => {
   beforeEach(() => {
     // Reset mocks before each test
     jest.clearAllMocks();
-    
+
     // Set up default mock implementations
     hashPassword.mockResolvedValue('hashedpassword123');
-    comparePassword.mockImplementation((plain, hash) => 
+    comparePassword.mockImplementation((plain, hash) =>
       Promise.resolve(plain === 'correctpassword')
     );
   });
@@ -121,9 +121,9 @@ describe('User Model', () => {
         password: 'password123',
         name: 'Existing User'
       };
-      
+
       const createdUser = await User.create(userData);
-      
+
       // Then find by email
       const foundUser = await User.findByEmail('existing@example.com');
 
@@ -151,9 +151,9 @@ describe('User Model', () => {
         password: 'password123',
         name: 'Case User'
       };
-      
+
       await User.create(userData);
-      
+
       // SQLite is case-insensitive for email matching in this implementation
       const foundUser = await User.findByEmail('casesensitive@example.com');
       expect(foundUser).toBeDefined();
@@ -167,7 +167,7 @@ describe('User Model', () => {
         password: 'password123',
         name: 'Find By ID User'
       };
-      
+
       const createdUser = await User.create(userData);
       const foundUser = await User.findById(createdUser.id);
 
@@ -272,7 +272,7 @@ describe('User Model', () => {
         created_at: '2024-01-15 10:00:00',
         updated_at: '2024-01-15 10:00:00'
       });
-      
+
       expect(json).not.toHaveProperty('password');
     });
 
@@ -391,7 +391,7 @@ describe('User Model', () => {
 
     test('should maintain data integrity across operations', async () => {
       const users = [];
-      
+
       // Create multiple users
       for (let i = 1; i <= 3; i++) {
         const userData = {
@@ -399,7 +399,7 @@ describe('User Model', () => {
           password: `password${i}`,
           name: `User ${i}`
         };
-        
+
         const user = await User.create(userData);
         users.push(user);
       }

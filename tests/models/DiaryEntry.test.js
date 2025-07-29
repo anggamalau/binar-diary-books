@@ -241,7 +241,7 @@ describe('DiaryEntry Model', () => {
     beforeEach(async () => {
       // Create entries across multiple dates
       const dates = ['2024-01-10', '2024-01-15', '2024-01-20', '2024-01-25'];
-      
+
       for (let i = 0; i < dates.length; i++) {
         await DiaryEntry.create({
           user_id: testUser.id,
@@ -254,8 +254,8 @@ describe('DiaryEntry Model', () => {
 
     test('should return entries within date range', async () => {
       const entries = await DiaryEntry.findByUserAndDateRange(
-        testUser.id, 
-        '2024-01-12', 
+        testUser.id,
+        '2024-01-12',
         '2024-01-22'
       );
 
@@ -266,8 +266,8 @@ describe('DiaryEntry Model', () => {
 
     test('should return empty array for range with no entries', async () => {
       const entries = await DiaryEntry.findByUserAndDateRange(
-        testUser.id, 
-        '2024-02-01', 
+        testUser.id,
+        '2024-02-01',
         '2024-02-28'
       );
 
@@ -276,8 +276,8 @@ describe('DiaryEntry Model', () => {
 
     test('should include boundary dates', async () => {
       const entries = await DiaryEntry.findByUserAndDateRange(
-        testUser.id, 
-        '2024-01-15', 
+        testUser.id,
+        '2024-01-15',
         '2024-01-20'
       );
 
@@ -288,8 +288,8 @@ describe('DiaryEntry Model', () => {
 
     test('should order by entry_date ASC, then created_at ASC', async () => {
       const entries = await DiaryEntry.findByUserAndDateRange(
-        testUser.id, 
-        '2024-01-01', 
+        testUser.id,
+        '2024-01-01',
         '2024-01-31'
       );
 
@@ -673,7 +673,7 @@ describe('DiaryEntry Model', () => {
     test('should respect offset parameter', async () => {
       // First get all results to understand the data
       const allEntries = await DiaryEntry.searchByUser(testUser.id, 'on');
-      
+
       if (allEntries.length >= 3) {
         const entries = await DiaryEntry.searchByUser(testUser.id, 'on', 2, 1);
         expect(entries.length).toBeGreaterThanOrEqual(1);

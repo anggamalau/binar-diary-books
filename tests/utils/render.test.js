@@ -64,8 +64,8 @@ describe('Render Utilities', () => {
 
     test('should preserve data properties in layout render', async () => {
       const template = 'entries/list';
-      const data = { 
-        title: 'My Entries', 
+      const data = {
+        title: 'My Entries',
         user: { id: 1, name: 'Alice' },
         entries: [{ id: 1, title: 'Entry 1' }],
         csrfToken: 'abc123'
@@ -274,7 +274,7 @@ describe('Render Utilities', () => {
   describe('error handling edge cases', () => {
     test('should handle synchronous errors in template rendering', async () => {
       const template = 'sync-error-template';
-      
+
       mockRes.render.mockImplementationOnce(() => {
         throw new Error('Synchronous template error');
       });
@@ -288,7 +288,7 @@ describe('Render Utilities', () => {
       const template = 'circular-test';
       const data = { title: 'Circular Test' };
       data.self = data; // Create circular reference
-      
+
       const renderedTemplate = '<div>Circular test</div>';
       const finalHtml = '<html><body><div>Circular test</div></body></html>';
 

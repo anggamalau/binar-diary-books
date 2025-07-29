@@ -26,7 +26,7 @@ router.post('/register', [
 ], async (req, res) => {
   try {
     const errors = validationResult(req);
-    
+
     if (!errors.isEmpty()) {
       return res.render('auth/register', {
         title: 'Register',
@@ -52,8 +52,8 @@ router.post('/register', [
     });
 
     const token = generateToken(user.id);
-    res.cookie('token', token, { 
-      httpOnly: true, 
+    res.cookie('token', token, {
+      httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       maxAge: 7 * 24 * 60 * 60 * 1000
     });
@@ -85,7 +85,7 @@ router.post('/login', [
 ], async (req, res) => {
   try {
     const errors = validationResult(req);
-    
+
     if (!errors.isEmpty()) {
       return res.render('auth/login', {
         title: 'Login',
@@ -104,8 +104,8 @@ router.post('/login', [
     }
 
     const token = generateToken(user.id);
-    res.cookie('token', token, { 
-      httpOnly: true, 
+    res.cookie('token', token, {
+      httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       maxAge: 7 * 24 * 60 * 60 * 1000
     });

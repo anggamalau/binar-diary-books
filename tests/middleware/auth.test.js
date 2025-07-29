@@ -29,7 +29,7 @@ describe('Authentication Middleware', () => {
       locals: {}
     };
     next = jest.fn();
-    
+
     jest.clearAllMocks();
     process.env.JWT_SECRET = 'test-secret';
     process.env.NODE_ENV = 'development';
@@ -123,7 +123,7 @@ describe('Authentication Middleware', () => {
       req.cookies.token = 'expiring-token';
       jwt.verify.mockReturnValue(mockDecoded);
       User.findById.mockResolvedValue(mockUser);
-      
+
       // Mock the require call for generateToken
       const authUtils = require('../../utils/auth');
       authUtils.generateToken = jest.fn().mockReturnValue(newToken);
@@ -142,7 +142,7 @@ describe('Authentication Middleware', () => {
 
     test('should set secure cookie in production environment', async () => {
       process.env.NODE_ENV = 'production';
-      
+
       const mockUser = { id: 1, email: 'test@example.com' };
       const now = Math.floor(Date.now() / 1000);
       const mockDecoded = { userId: 1, exp: now + (23 * 60 * 60) };
@@ -151,7 +151,7 @@ describe('Authentication Middleware', () => {
       req.cookies.token = 'expiring-token';
       jwt.verify.mockReturnValue(mockDecoded);
       User.findById.mockResolvedValue(mockUser);
-      
+
       const authUtils = require('../../utils/auth');
       authUtils.generateToken = jest.fn().mockReturnValue(newToken);
 
@@ -330,7 +330,7 @@ describe('Authentication Middleware', () => {
 
     test('should preserve existing session data', async () => {
       req.cookies.token = undefined;
-      req.session = { 
+      req.session = {
         existingData: 'should be preserved',
         anotherField: 123
       };
@@ -359,14 +359,14 @@ describe('Authentication Middleware', () => {
       req.cookies.token = undefined;
       guestOnly(req, res, next);
       expect(next).toHaveBeenCalled();
-      
+
       // Reset mocks
       jest.clearAllMocks();
-      
+
       // Then, test with valid token
       const mockUser = { id: 1, email: 'test@example.com' };
       const mockDecoded = { userId: 1, exp: Math.floor(Date.now() / 1000) + 3600 };
-      
+
       req.cookies.token = 'valid-token';
       jwt.verify.mockReturnValue(mockDecoded);
       User.findById.mockResolvedValue(mockUser);
