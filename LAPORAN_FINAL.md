@@ -61,4 +61,11 @@ based on @documentation/PRD.md implement Phase 5
 **ASK FOR UI/UX IMPROVEMENT PLAN**
 ```sh
 make a plan for improving ui/ux on dashboard pages
+save the plan into documentation directory
+```
+
+**ASK FOR UNIT TESTING PLAN**
+```sh
+make a plan for unit testing
+save the plan into documentation directory
 ```
