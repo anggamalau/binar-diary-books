@@ -102,3 +102,8 @@ execute Option 2: Make Database Close Synchronous in Tests is the best option.
 based on @documentation/unit-testing-plan.md
 implement unit testing plan phase 2
 ```
+
+```sh
+based on @documentation/unit-testing-plan.md
+implement unit testing plan phase 3
+```

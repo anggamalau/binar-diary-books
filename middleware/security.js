@@ -67,7 +67,7 @@ const csrfProtection = (req, res, next) => {
   }
   
   const token = req.body._csrf || req.headers['x-csrf-token'];
-  const sessionToken = req.session.csrfToken;
+  const sessionToken = req.session && req.session.csrfToken;
   
   if (!token || !sessionToken || token !== sessionToken) {
     return res.status(403).render('error', {
@@ -84,10 +84,10 @@ const csrfProtection = (req, res, next) => {
 
 // Generate CSRF token
 const generateCsrfToken = (req, res, next) => {
-  if (!req.session.csrfToken) {
+  if (req.session && !req.session.csrfToken) {
     req.session.csrfToken = require('crypto').randomBytes(32).toString('hex');
   }
-  res.locals.csrfToken = req.session.csrfToken;
+  res.locals.csrfToken = req.session && req.session.csrfToken;
   next();
 };
 

@@ -33,7 +33,7 @@ const errorHandler = (err, req, res, next) => {
   }
 
   // Handle AJAX requests
-  if (req.xhr || req.headers.accept.indexOf('json') > -1) {
+  if (req.xhr || (req.headers && req.headers.accept && req.headers.accept.indexOf('json') > -1)) {
     return res.status(status).json({
       error: {
         status: status,
