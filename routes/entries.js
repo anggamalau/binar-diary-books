@@ -8,6 +8,50 @@ const router = express.Router();
 // All routes require authentication
 router.use(authMiddleware);
 
+// Search entries
+router.get('/search', async (req, res) => {
+  try {
+    const searchTerm = req.query.q || '';
+    const page = parseInt(req.query.page) || 1;
+    const limit = 12;
+    const offset = (page - 1) * limit;
+    
+    if (!searchTerm.trim()) {
+      return res.render('entries/search', {
+        title: 'Search Entries',
+        user: req.user,
+        entries: [],
+        searchTerm: '',
+        currentPage: 1,
+        hasMore: false
+      });
+    }
+    
+    const entries = await DiaryEntry.searchByUser(req.user.id, searchTerm, limit + 1, offset);
+    const hasMore = entries.length > limit;
+    
+    if (hasMore) {
+      entries.pop();
+    }
+    
+    res.render('entries/search', {
+      title: 'Search Results',
+      user: req.user,
+      entries: entries,
+      searchTerm: searchTerm,
+      currentPage: page,
+      hasMore: hasMore
+    });
+  } catch (error) {
+    console.error('Error searching entries:', error);
+    res.render('error', {
+      title: 'Error',
+      message: 'Failed to search entries',
+      error: {}
+    });
+  }
+});
+
 // View entries by tag
 router.get('/tag/:tag', async (req, res) => {
   try {

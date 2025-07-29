@@ -9,12 +9,17 @@ const { runMigrations } = require('./scripts/migrate');
 const authRoutes = require('./routes/auth');
 const indexRoutes = require('./routes/index');
 const entriesRoutes = require('./routes/entries');
+const { errorHandler, notFoundHandler } = require('./middleware/errorHandler');
+const { securityHeaders, generateCsrfToken } = require('./middleware/security');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+
+// Security middleware
+app.use(securityHeaders);
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
@@ -30,26 +35,18 @@ app.use(session({
   }
 }));
 
+// CSRF token generation
+app.use(generateCsrfToken);
+
 app.use('/', indexRoutes);
 app.use('/auth', authRoutes);
 app.use('/entries', entriesRoutes);
 
-app.use((err, req, res, _next) => {
-  console.error(err.stack);
-  res.status(500).render('error', { 
-    title: 'Error',
-    message: 'Something went wrong!',
-    error: process.env.NODE_ENV === 'development' ? err : {}
-  });
-});
+// 404 handler
+app.use(notFoundHandler);
 
-app.use((_req, res) => {
-  res.status(404).render('error', {
-    title: '404 Not Found',
-    message: 'Page not found',
-    error: {}
-  });
-});
+// Error handler
+app.use(errorHandler);
 
 async function startServer() {
   try {

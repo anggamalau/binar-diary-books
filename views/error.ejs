@@ -22,14 +22,51 @@
     <main class="container mt-4">
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <div class="card">
-                    <div class="card-body text-center">
-                        <h2 class="card-title text-danger"><%= title %></h2>
-                        <p class="card-text"><%= message %></p>
+                <div class="card shadow">
+                    <div class="card-body text-center py-5">
+                        <div class="mb-4">
+                            <% if (locals.status === 404) { %>
+                                <i class="fas fa-search text-warning" style="font-size: 4rem;"></i>
+                            <% } else if (locals.status >= 500) { %>
+                                <i class="fas fa-exclamation-triangle text-danger" style="font-size: 4rem;"></i>
+                            <% } else if (locals.status === 401) { %>
+                                <i class="fas fa-lock text-warning" style="font-size: 4rem;"></i>
+                            <% } else { %>
+                                <i class="fas fa-exclamation-circle text-warning" style="font-size: 4rem;"></i>
+                            <% } %>
+                        </div>
+                        
+                        <h2 class="card-title mb-3">
+                            <% if (locals.status) { %>
+                                <%= status %> - <%= title %>
+                            <% } else { %>
+                                <%= title %>
+                            <% } %>
+                        </h2>
+                        
+                        <p class="card-text text-muted mb-4"><%= message %></p>
+                        
                         <% if (error && error.stack && process.env.NODE_ENV === 'development') { %>
-                            <pre class="text-start mt-3 p-3 bg-light"><%= error.stack %></pre>
+                            <details class="mt-4">
+                                <summary class="btn btn-sm btn-outline-secondary mb-3">Show Debug Info</summary>
+                                <pre class="text-start p-3 bg-light" style="max-height: 300px; overflow-y: auto;"><%= error.stack %></pre>
+                            </details>
                         <% } %>
-                        <a href="/" class="btn btn-primary">Go Home</a>
+                        
+                        <div class="d-flex gap-2 justify-content-center mt-4">
+                            <% if (locals.status === 401) { %>
+                                <a href="/auth/login" class="btn btn-primary">
+                                    <i class="fas fa-sign-in-alt me-2"></i>Go to Login
+                                </a>
+                            <% } else { %>
+                                <button onclick="history.back()" class="btn btn-outline-secondary">
+                                    <i class="fas fa-arrow-left me-2"></i>Go Back
+                                </button>
+                                <a href="/" class="btn btn-primary">
+                                    <i class="fas fa-home me-2"></i>Go Home
+                                </a>
+                            <% } %>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -159,6 +159,34 @@ class DiaryEntry {
     }
   }
 
+  static async searchByUser(userId, searchTerm, limit = null, offset = 0) {
+    try {
+      const search = `%${searchTerm}%`;
+      let sql = `
+        SELECT * FROM diary_entries 
+        WHERE user_id = ? AND (
+          title LIKE ? OR 
+          content LIKE ? OR 
+          tags LIKE ?
+        )
+        ORDER BY entry_date DESC, created_at DESC
+      `;
+      
+      const params = [userId, search, search, search];
+      
+      if (limit) {
+        sql += ' LIMIT ? OFFSET ?';
+        params.push(limit, offset);
+      }
+      
+      const rows = await database.all(sql, params);
+      return rows.map(row => new DiaryEntry(row));
+    } catch (error) {
+      console.error('Error searching diary entries:', error);
+      throw error;
+    }
+  }
+
   toJSON() {
     return {
       id: this.id,

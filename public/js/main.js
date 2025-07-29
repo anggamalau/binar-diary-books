@@ -10,6 +10,32 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, 100);
 
+    // Add loading states to forms
+    const forms = document.querySelectorAll('form');
+    forms.forEach(function(form) {
+        form.addEventListener('submit', function(e) {
+            // Skip if form has no-loading class
+            if (form.classList.contains('no-loading')) return;
+            
+            // Find submit button
+            const submitBtn = form.querySelector('button[type="submit"]');
+            if (submitBtn) {
+                // Store original text
+                const originalText = submitBtn.innerHTML;
+                
+                // Add loading spinner
+                submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Loading...';
+                submitBtn.disabled = true;
+                
+                // Re-enable after a timeout (in case of errors)
+                setTimeout(function() {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                }, 10000);
+            }
+        });
+    });
+
     // Calendar day click handlers
     const calendarDays = document.querySelectorAll('.calendar-day[data-date]');
     calendarDays.forEach(function(day) {
