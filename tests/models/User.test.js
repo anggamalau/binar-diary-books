@@ -14,7 +14,7 @@ describe('User Model', () => {
 
     // Set up default mock implementations
     hashPassword.mockResolvedValue('hashedpassword123');
-    comparePassword.mockImplementation((plain, hash) =>
+    comparePassword.mockImplementation((plain) =>
       Promise.resolve(plain === 'correctpassword')
     );
   });
@@ -323,6 +323,7 @@ describe('User Model', () => {
       try {
         await User.findByEmail('test@invalid-query.com');
       } catch (error) {
+        console.error('Error finding user by email:', error);
         // Error handling works
       }
 
@@ -336,7 +337,7 @@ describe('User Model', () => {
       try {
         await User.findById(1);
       } catch (error) {
-        // Error handling works
+        console.error('Error finding user by ID:', error);
       }
 
       console.error = originalConsoleError;

@@ -5,7 +5,6 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 
 const database = require('./config/database');
-const { runMigrations } = require('./scripts/migrate');
 const authRoutes = require('./routes/auth');
 const indexRoutes = require('./routes/index');
 const entriesRoutes = require('./routes/entries');

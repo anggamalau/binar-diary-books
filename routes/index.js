@@ -1,6 +1,5 @@
 const express = require('express');
 const { authMiddleware, guestOnly } = require('../middleware/auth');
-const database = require('../config/database');
 const { getCalendarData, parseMonthYear, getNavigationData } = require('../utils/calendar');
 const DiaryEntry = require('../models/DiaryEntry');
 

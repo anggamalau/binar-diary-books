@@ -144,7 +144,7 @@ router.post('/create', [
       });
     }
 
-    const entry = await DiaryEntry.create({
+    await DiaryEntry.create({
       user_id: req.user.id,
       title: req.body.title,
       content: req.body.content,

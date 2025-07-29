@@ -487,8 +487,6 @@ describe('DiaryEntry Model', () => {
     });
 
     test('should update timestamp on modification', async () => {
-      const originalUpdatedAt = testEntry.updated_at;
-
       const updateData = {
         title: 'Time Test Update',
         content: 'Updated for time test',

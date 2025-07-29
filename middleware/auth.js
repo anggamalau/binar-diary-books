@@ -62,6 +62,7 @@ const guestOnly = (req, res, next) => {
       jwt.verify(token, process.env.JWT_SECRET);
       return res.redirect('/dashboard');
     } catch (error) {
+      console.error('Guest only middleware error:', error);
       res.clearCookie('token');
     }
   }

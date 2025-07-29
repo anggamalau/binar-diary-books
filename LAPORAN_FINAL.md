@@ -132,3 +132,8 @@ It cannot auto-fix:
 - ❌ Console statements - Requires manual review to keep/remove
 - ❌ Logic errors - Need human judgment
 ```
+
+Untuk error sudah di-fix secara manual, tetapi untuk warning akan di-compressed
+```sh
+could you help me to compress no-console on lints
+```

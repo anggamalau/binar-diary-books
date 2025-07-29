@@ -1,4 +1,4 @@
-const errorHandler = (err, req, res, next) => {
+const errorHandler = (err, req, res) => {
   // Log error for debugging
   console.error('Error:', err.stack);
 

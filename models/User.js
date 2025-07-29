@@ -58,7 +58,7 @@ class User {
   }
 
   toJSON() {
-    const { password, ...userWithoutPassword } = this;
+    const { ...userWithoutPassword } = this;
     return userWithoutPassword;
   }
 }

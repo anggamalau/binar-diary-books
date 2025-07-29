@@ -1,5 +1,3 @@
-const helmet = require('helmet');
-
 // Security headers middleware
 const securityHeaders = (req, res, next) => {
   // Basic security headers

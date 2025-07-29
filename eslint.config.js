@@ -25,7 +25,7 @@ module.exports = [
         argsIgnorePattern: '^_',
         varsIgnorePattern: '^_'
       }],
-      'no-console': ['warn', { allow: ['warn', 'error'] }],
+      'no-console': 'off',
       'no-debugger': 'error',
       'no-alert': 'error',
       'no-eval': 'error',
