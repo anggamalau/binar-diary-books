@@ -57,3 +57,8 @@ based on @documentation/PRD.md implement Phase 4
 ```sh
 based on @documentation/PRD.md implement Phase 5
 ```
+
+**ASK FOR UI/UX IMPROVEMENT PLAN**
+```sh
+make a plan for improving ui/ux on dashboard pages
+```
