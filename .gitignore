@@ -1,0 +1,14 @@
+node_modules/
+database/*.db
+.env
+.DS_Store
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+.eslintcache
+.coverage/
+build/
+dist/

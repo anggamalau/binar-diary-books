@@ -32,3 +32,9 @@ use common ssr structure instead of mono-repo structure
 update @documentation/PRD.md:
 separate feature implementation incrementaly
 ```
+
+**IMPLEMENT PHASE 1**
+```sh
+based on @documentation/PRD.md implement Phase 1
+```
+
