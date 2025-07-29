@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %> - Diary Books</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="/">Diary Books</a>
+            <% if (locals.user) { %>
+                <div class="navbar-nav ms-auto">
+                    <a class="nav-link" href="/auth/logout">Logout</a>
+                </div>
+            <% } %>
+        </div>
+    </nav>
+
+    <main class="container mt-4">
+        <% if (locals.error) { %>
+            <div class="alert alert-danger" role="alert">
+                <%= error %>
+            </div>
+        <% } %>
+        
+        <% if (locals.success) { %>
+            <div class="alert alert-success" role="alert">
+                <%= success %>
+            </div>
+        <% } %>
+
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <!-- Navigation breadcrumb -->
+                <nav aria-label="breadcrumb" class="mb-4">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="/entries/date/<%= date %>"><%= formattedDate %></a></li>
+                        <li class="breadcrumb-item active" aria-current="page">New Entry</li>
+                    </ol>
+                </nav>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="mb-0">
+                            <i class="fas fa-plus-circle me-2"></i>
+                            New Diary Entry for <%= formattedDate %>
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" action="/entries/create">
+                            <input type="hidden" name="entry_date" value="<%= date %>">
+                            
+                            <div class="mb-3">
+                                <label for="title" class="form-label">
+                                    <i class="fas fa-heading me-1"></i>
+                                    Title *
+                                </label>
+                                <input type="text" 
+                                       class="form-control" 
+                                       id="title" 
+                                       name="title" 
+                                       value="<%= locals.formData ? formData.title : '' %>" 
+                                       placeholder="What happened today?"
+                                       required>
+                                <div class="form-text">Give your entry a meaningful title</div>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label for="content" class="form-label">
+                                    <i class="fas fa-file-alt me-1"></i>
+                                    Content *
+                                </label>
+                                <textarea class="form-control entry-content" 
+                                          id="content" 
+                                          name="content" 
+                                          rows="12" 
+                                          placeholder="Share your thoughts, experiences, and feelings..."
+                                          required><%= locals.formData ? formData.content : '' %></textarea>
+                                <div class="form-text">Write about your day, thoughts, or anything on your mind</div>
+                            </div>
+                            
+                            <div class="d-flex justify-content-between">
+                                <a href="/entries/date/<%= date %>" class="btn btn-secondary">
+                                    <i class="fas fa-times me-1"></i>
+                                    Cancel
+                                </a>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-save me-1"></i>
+                                    Save Entry
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+</html>

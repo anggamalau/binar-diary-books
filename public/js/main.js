@@ -29,36 +29,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function handleDayClick(date) {
-        // For Phase 2, we'll just show an alert
-        // In Phase 3, this will navigate to the entry management page
+        // Navigate to the entries page for the selected date
         console.log('Day clicked:', date);
-        
-        // Show a temporary message
-        const alertContainer = document.querySelector('main .container');
-        if (alertContainer) {
-            const existingAlert = alertContainer.querySelector('.day-click-alert');
-            if (existingAlert) {
-                existingAlert.remove();
-            }
-
-            const alertDiv = document.createElement('div');
-            alertDiv.className = 'alert alert-info alert-dismissible fade show day-click-alert';
-            alertDiv.innerHTML = `
-                <strong>Day Selected:</strong> ${formatDate(date)}
-                <br><small>Diary entry management will be available in Phase 3.</small>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            `;
-            
-            alertContainer.insertBefore(alertDiv, alertContainer.firstChild);
-            
-            // Auto-hide after 3 seconds
-            setTimeout(function() {
-                if (alertDiv.parentNode) {
-                    const bsAlert = new bootstrap.Alert(alertDiv);
-                    bsAlert.close();
-                }
-            }, 3000);
-        }
+        window.location.href = `/entries/date/${date}`;
     }
 
     function formatDate(dateString) {

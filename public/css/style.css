@@ -132,6 +132,57 @@ main {
 .day-content {
     flex: 1;
     margin-top: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calendar-day.has-entries {
+    background-color: #f0f8ff;
+    border-left: 3px solid #007bff;
+}
+
+.calendar-day.has-entries:hover {
+    background-color: #e6f3ff;
+}
+
+.calendar-day.has-entries.today {
+    background-color: #e3f2fd;
+    border: 2px solid #2196f3;
+    border-left: 3px solid #007bff;
+}
+
+.entry-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #007bff;
+    color: white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    gap: 0.25rem;
+}
+
+.entry-indicator i {
+    font-size: 0.7rem;
+}
+
+.entry-count {
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+/* Entry content styles */
+.entry-content {
+    white-space: pre-wrap;
+    line-height: 1.6;
+}
+
+.entry-preview {
+    line-height: 1.5;
 }
 
 /* Responsive Design */

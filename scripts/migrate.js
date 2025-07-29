@@ -25,6 +25,30 @@ const migrations = [
         executed_at DATETIME DEFAULT CURRENT_TIMESTAMP
       )
     `
+  },
+  {
+    version: 3,
+    description: 'Create diary_entries table',
+    sql: `
+      CREATE TABLE IF NOT EXISTS diary_entries (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        user_id INTEGER NOT NULL,
+        title TEXT NOT NULL,
+        content TEXT NOT NULL,
+        entry_date DATE NOT NULL,
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+        updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
+      )
+    `
+  },
+  {
+    version: 4,
+    description: 'Create index on diary_entries for user_id and entry_date',
+    sql: `
+      CREATE INDEX IF NOT EXISTS idx_diary_entries_user_date 
+      ON diary_entries (user_id, entry_date)
+    `
   }
 ];
 

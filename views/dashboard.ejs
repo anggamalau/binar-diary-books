@@ -83,13 +83,19 @@
                                     <div class="calendar-week">
                                         <% week.forEach(function(day) { %>
                                             <% if (day) { %>
-                                                <div class="calendar-day <%= day.isToday ? 'today' : '' %>" 
+                                                <% const hasEntries = entryCounts && entryCounts[day.dateString]; %>
+                                                <div class="calendar-day <%= day.isToday ? 'today' : '' %> <%= hasEntries ? 'has-entries' : '' %>" 
                                                      data-date="<%= day.dateString %>"
                                                      role="button"
                                                      tabindex="0">
                                                     <span class="day-number"><%= day.day %></span>
                                                     <div class="day-content">
-                                                        <!-- Entry indicators will go here in Phase 3 -->
+                                                        <% if (hasEntries) { %>
+                                                            <div class="entry-indicator">
+                                                                <i class="fas fa-book-open"></i>
+                                                                <span class="entry-count"><%= entryCounts[day.dateString] %></span>
+                                                            </div>
+                                                        <% } %>
                                                     </div>
                                                 </div>
                                             <% } else { %>
@@ -102,7 +108,14 @@
                         </div>
                     </div>
                     <div class="card-footer text-muted">
-                        <small>Click on any day to view or create diary entries for that date.</small>
+                        <small>
+                            <i class="fas fa-info-circle me-1"></i>
+                            Click on any day to view or create diary entries for that date.
+                            <span class="ms-3">
+                                <i class="fas fa-book-open me-1"></i>
+                                Days with entries are marked with an icon and count.
+                            </span>
+                        </small>
                     </div>
                 </div>
             </div>

@@ -42,3 +42,8 @@ based on @documentation/PRD.md implement Phase 1
 ```sh
 based on @documentation/PRD.md implement Phase 2
 ```
+
+**IMPLEMENT PHASE 3**
+```sh
+based on @documentation/PRD.md implement Phase 3
+```

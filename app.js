@@ -5,9 +5,10 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 
 const database = require('./config/database');
-// const { runMigrations } = require('./scripts/migrate');
+const { runMigrations } = require('./scripts/migrate');
 const authRoutes = require('./routes/auth');
 const indexRoutes = require('./routes/index');
+const entriesRoutes = require('./routes/entries');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -31,6 +32,7 @@ app.use(session({
 
 app.use('/', indexRoutes);
 app.use('/auth', authRoutes);
+app.use('/entries', entriesRoutes);
 
 app.use((err, req, res, _next) => {
   console.error(err.stack);
