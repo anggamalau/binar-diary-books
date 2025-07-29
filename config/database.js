@@ -24,15 +24,23 @@ class Database {
   }
 
   close() {
-    if (this.db) {
-      this.db.close((err) => {
-        if (err) {
-          console.error('Error closing database:', err.message);
-        } else {
-          console.log('Database connection closed');
-        }
-      });
-    }
+    return new Promise((resolve, reject) => {
+      if (this.db) {
+        this.db.close((err) => {
+          if (err) {
+            console.error('Error closing database:', err.message);
+            reject(err);
+          } else {
+            if (process.env.NODE_ENV !== 'test') {
+              console.log('Database connection closed');
+            }
+            resolve();
+          }
+        });
+      } else {
+        resolve();
+      }
+    });
   }
 
   run(sql, params = []) {

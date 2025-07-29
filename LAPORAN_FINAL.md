@@ -69,3 +69,31 @@ save the plan into documentation directory
 make a plan for unit testing
 save the plan into documentation directory
 ```
+
+**IMPLEMENT UNIT TESTING**
+```sh
+based on @documentation/unit-testing-plan.md
+implement unit testing plan phase 1
+```
+Terjadi error saat menjalankan npm start
+```sh
+do not code, find the reason that causing this error when execute npm start. here is the error:
+Cannot log after tests are done. Did you forget to wait for something async in your test?
+    Attempted to log "Database connection closed".
+
+      30 |           console.error('Error closing database:', err.message);
+      31 |         } else {
+    > 32 |           console.log('Database connection closed');
+         |                   ^
+      33 |         }
+      34 |       });
+      35 |     }
+
+      at console.log (node_modules/@jest/console/build/CustomConsole.js:141:10)
+      at Database.log (config/database.js:32:19)
+      at Database.replacement (node_modules/sqlite3/lib/trace.js:25:27)
+```
+
+```sh
+execute Option 2: Make Database Close Synchronous in Tests is the best option.
+```
