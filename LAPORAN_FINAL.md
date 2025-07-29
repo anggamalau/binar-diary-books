@@ -38,3 +38,7 @@ separate feature implementation incrementaly
 based on @documentation/PRD.md implement Phase 1
 ```
 
+**IMPLEMENT PHASE 2**
+```sh
+based on @documentation/PRD.md implement Phase 2
+```

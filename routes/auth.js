@@ -58,7 +58,10 @@ router.post('/register', [
       maxAge: 7 * 24 * 60 * 60 * 1000
     });
 
-    res.redirect('/dashboard');
+    // Redirect to intended destination or dashboard
+    const returnTo = req.session.returnTo || '/dashboard';
+    delete req.session.returnTo;
+    res.redirect(returnTo);
   } catch (error) {
     console.error('Registration error:', error);
     res.render('auth/register', {
@@ -107,7 +110,10 @@ router.post('/login', [
       maxAge: 7 * 24 * 60 * 60 * 1000
     });
 
-    res.redirect('/dashboard');
+    // Redirect to intended destination or dashboard
+    const returnTo = req.session.returnTo || '/dashboard';
+    delete req.session.returnTo;
+    res.redirect(returnTo);
   } catch (error) {
     console.error('Login error:', error);
     res.render('auth/login', {
