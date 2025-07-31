@@ -137,3 +137,37 @@ Untuk error sudah di-fix secara manual, tetapi untuk warning akan di-compressed
 ```sh
 could you help me to compress no-console on lints
 ```
+
+**IMPLEMENT GITHUB ACTIONS**
+```sh
+Do not code yet
+Make a plan to implement github actions to:
+do a job to run lint when branch is push or pr to main branch
+do a job to run unit test when branch is push or pr to main branch
+```
+
+setelah claude memberikan plan github actions, perintahkan claude untuk mengeksekusi plan
+```sh
+proceed the plan
+```
+
+saya mengubah hasil dari claude ai agar pipeline hanya jalan jika push dan pr ke main branch saja
+sebelum:
+
+```yaml
+on:
+  push:
+    branches: ['*']
+  pull_request:
+    branches: [main]
+```
+
+sesudah:
+
+```yaml
+on:
+  push:
+    branches: ['main']
+  pull_request:
+    branches: [main]
+```
