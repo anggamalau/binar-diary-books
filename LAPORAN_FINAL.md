@@ -212,3 +212,24 @@ Run test, then fix the issue causing failed testing
 
 Hasil perbaikan sudah berhasil, namun terdapat error pada lint yang harus diperbaiki secara manual
 
+Selanjutnya saya meminta claude ai untuk membuatkan github action untuk menjalankan sonarcloud untuk pengecekan kualitas dan keamanan kode aplikasi
+
+```sh
+Do not code yet
+Make a plan to implement github actions to:
+do a job to run code analysis using sonarcloud when push to main branch or pr to main branch
+```
+
+```sh
+claude membuat beberapa langkah sebagai berikut
+1. Research existing GitHub Actions workflow structure - COMPLETED
+2. Examine project structure for SonarCloud configuration - COMPLETED
+3. Create GitHub Actions workflow for SonarCloud analysis
+4. Configure SonarCloud project properties
+5. Document required GitHub secrets
+6. Provide setup instructions
+```
+
+```sh
+proceed
+```
