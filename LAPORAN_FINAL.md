@@ -61,4 +61,23 @@ Multiple services found. Please specify a service via the `--service` flag.
 Error: Process completed with exit code 1.
 ```
 
+Deployment gagal, dikarenakan gagal build docker image 
+
+```sh
+Pipeline deployment failed, here is the errors:
+
+npm warn config production Use `--omit=dev` instead.
+npm warn EBADENGINE Unsupported engine {
+npm warn EBADENGINE   package: 'eslint-plugin-jest@29.0.1',
+npm warn EBADENGINE   required: { node: '^20.12.0 || ^22.0.0 || >=24.0.0' },
+npm warn EBADENGINE   current: { node: 'v18.20.5', npm: '10.8.2' }
+npm warn EBADENGINE }
+npm error code EBUSY
+npm error syscall rmdir
+npm error path /app/node_modules/.cache
+npm error errno -16
+npm error EBUSY: resource busy or locked, rmdir '/app/node_modules/.cache'
+npm error A complete log of this run can be found in: /root/.npm/_logs/2025-08-01T10_41_47_344Z-debug-0.log
+```
+
 Selanjutnya saya setup env di railway, dan menunggu deployment ke railway melalui github actions
