@@ -111,4 +111,29 @@ error:
            20|       ];
 ```
 
+Masih error, 
+```sh
+Still error, fix this error:
+
+
+npm warn deprecated are-we-there-yet@3.0.1: This package is no longer supported.
+npm warn deprecated babel-eslint@10.1.0: babel-eslint is now @babel/eslint-parser. This package will no longer receive updates.
+npm warn deprecated @npmcli/move-file@1.1.2: This functionality has been moved to @npmcli/fs
+npm warn deprecated rimraf@2.6.3: Rimraf versions prior to v4 are no longer supported
+npm warn deprecated rimraf@2.6.3: Rimraf versions prior to v4 are no longer supported
+npm warn deprecated eslint@6.8.0: This version is no longer supported. Please see https://eslint.org/version-support for other options.
+npm warn deprecated eslint@6.8.0: This version is no longer supported. Please see https://eslint.org/version-support for other options.
+added 822 packages, and audited 823 packages in 6s
+162 packages are looking for funding
+  run `npm fund` for details
+found 0 vulnerabilities
+[stage-0  6/10] RUN --mount=type=cache,id=s/***-/root/npm,target=/root/.npm npm ci
+[stage-0  7/10] COPY . /app/.
+[stage-0  7/10] COPY . /app/.
+[stage-0  8/10] RUN --mount=type=cache,id=s/***-node_modules/cache,target=/app/node_modules/.cache npm ci --omit=dev
+npm warn config production Use `--omit=dev` instead.
+Deploy failed
+Error: Process completed with exit code 1.
+```
+
 Selanjutnya saya setup env di railway, dan menunggu deployment ke railway melalui github actions
