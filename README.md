@@ -145,6 +145,24 @@ The following environment variables can be configured in `.env`:
 - `JWT_SECRET`: Secret key for JWT tokens and sessions (change in production!)
 - `DB_PATH`: Path to SQLite database file
 - `NODE_ENV`: Environment mode (development/production)
+- `SESSION_SECRET`: Session secret for express-session (required in production)
+
+## Deployment
+
+### Railway.app Deployment
+This application is configured for automatic deployment to Railway.app via GitHub Actions.
+
+**Setup Requirements:**
+1. Create a Railway account and project
+2. Add `RAILWAY_TOKEN` to GitHub repository secrets
+3. Configure environment variables in Railway dashboard
+
+**CI/CD Pipeline:**
+- Automated deployment on push to main branch
+- Sequential pipeline: Lint → Test → SonarCloud → Deploy
+- Pull requests run quality checks without deployment
+
+See [Railway Deployment Setup Guide](./documentation/railway-deployment-setup.md) for detailed instructions.
 
 ## Next Steps - Phase 5 (Polish & Optimization)
 - Comprehensive error handling improvements
