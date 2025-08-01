@@ -136,4 +136,24 @@ Deploy failed
 Error: Process completed with exit code 1.
 ```
 
+Proses build berhasil, tetapi aplikasi belum run
+```sh
+Application building is success, but the application is failed to run
+Here is the log:
+
+Path: /
+Retry window: 5m0s
+Attempt #1 failed with service unavailable. Continuing to retry for 4m49s
+Attempt #2 failed with service unavailable. Continuing to retry for 4m38s
+Attempt #3 failed with service unavailable. Continuing to retry for 4m35s
+Attempt #4 failed with service unavailable. Continuing to retry for 4m31s
+Attempt #5 failed with service unavailable. Continuing to retry for 4m22s
+Attempt #6 failed with service unavailable. Continuing to retry for 4m6s
+Attempt #7 failed with service unavailable. Continuing to retry for 3m35s
+Attempt #8 failed with service unavailable. Continuing to retry for 3m5s
+Attempt #9 failed with service unavailable. Continuing to retry for 2m34s
+Attempt #10 failed with service unavailable. Continuing to retry for 2m4s
+Attempt #11 failed with service unavailable. Continuing to retry for 1m33s
+```
+
 Selanjutnya saya setup env di railway, dan menunggu deployment ke railway melalui github actions
