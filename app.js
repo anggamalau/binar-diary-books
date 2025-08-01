@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 
 const database = require('./config/database');
+const { runMigrations } = require('./scripts/migrate');
 const authRoutes = require('./routes/auth');
 const indexRoutes = require('./routes/index');
 const entriesRoutes = require('./routes/entries');
@@ -50,7 +51,7 @@ app.use(errorHandler);
 async function startServer() {
   try {
     await database.connect();
-    // await runMigrations();
+    await runMigrations(false); // Don't close connection after migrations
 
     app.listen(PORT, '0.0.0.0', () => {
       console.log(`Server running on port ${PORT}`);

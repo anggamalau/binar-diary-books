@@ -59,9 +59,11 @@ const migrations = [
   }
 ];
 
-async function runMigrations() {
+async function runMigrations(shouldCloseConnection = true) {
   try {
-    await database.connect();
+    if (!database.db) {
+      await database.connect();
+    }
 
     await database.run(`
       CREATE TABLE IF NOT EXISTS migration_history (
@@ -95,7 +97,9 @@ async function runMigrations() {
     console.error('Migration failed:', error);
     process.exit(1);
   } finally {
-    database.close();
+    if (shouldCloseConnection) {
+      database.close();
+    }
   }
 }
 

@@ -156,4 +156,26 @@ Attempt #10 failed with service unavailable. Continuing to retry for 2m4s
 Attempt #11 failed with service unavailable. Continuing to retry for 1m33s
 ```
 
+Deployment berhasil, tetapi datanya belum tersedia,
+```
+deployment is done, but data is not found
+maybe while deploying need to do migration first
+here is the error:
+
+Registration error: Error: SQLITE_ERROR: no such table: users
+--> in Database#get('SELECT * FROM users WHERE email = ?', [ 'admin@mail.com' ], [Function (anonymous)])
+    at /app/config/database.js:67:15
+    at new Promise (<anonymous>)
+    at Database.get (/app/config/database.js:66:12)
+    at User.findByEmail (/app/models/User.js:16:34)
+    at /app/routes/auth.js:39:37
+    at Layer.handle [as handle_request] (/app/node_modules/express/lib/router/layer.js:95:5)
+    at next (/app/node_modules/express/lib/router/route.js:149:13)
+    at middleware (/app/node_modules/express-validator/lib/middlewares/check.js:16:13) {
+  errno: 1,
+  code: 'SQLITE_ERROR',
+  __augmented: true
+}
+``
+
 Selanjutnya saya setup env di railway, dan menunggu deployment ke railway melalui github actions
