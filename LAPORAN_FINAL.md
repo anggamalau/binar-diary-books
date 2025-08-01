@@ -171,3 +171,44 @@ on:
   pull_request:
     branches: [main]
 ```
+
+Setelah saya push ke main branch, pipeline lint dan test jalan bersamaan,
+pipeline lint berhasil dijalankan dan pass, tetapi pipeline test failed
+
+```sh
+do not code yet, please check this error occured on github actions
+  ● Test suite failed to run
+
+    thrown: "Exceeded timeout of 10000 ms for a hook.
+    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+      44 |
+      45 | // Global test cleanup
+    > 46 | afterAll(async () => {
+         | ^
+      47 |   if (database.db) {
+      48 |     await database.close();
+      49 |   }
+
+      at Object.afterAll (tests/setup.js:46:1)
+
+maybe we need to mock the database
+```
+
+claude ai memberikan 4 opsi:
+Option 1: Add explicit timeout and force close (Quick fix)
+Option 2: Mock the database (as you suggested)
+Option 3: Fix the underlying database close issue
+Option 4: Use a file-based database for CI
+saya pilih opsi 1
+```sh
+proceed option 2
+```
+
+Masih muncul error, minta bantuan AI untuk memperbaiki hasil test
+```sh
+Run test, then fix the issue causing failed testing
+```
+
+Hasil perbaikan sudah berhasil, namun terdapat error pada lint yang harus diperbaiki secara manual
+
