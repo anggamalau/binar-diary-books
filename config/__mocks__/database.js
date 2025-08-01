@@ -226,8 +226,10 @@ class MockDatabase {
 
       // Convert to array format expected by the model
       return Promise.resolve(
-        Object.entries(grouped).map(([entryDate, count]) => ({
-          entryDate,
+        // eslint-disable-next-line camelcase
+        Object.entries(grouped).map(([entry_date, count]) => ({
+          // eslint-disable-next-line camelcase
+          entry_date,
           count
         }))
       );
