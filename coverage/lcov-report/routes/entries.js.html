@@ -370,7 +370,8 @@
 <a name='L305'></a><a href='#L305'>305</a>
 <a name='L306'></a><a href='#L306'>306</a>
 <a name='L307'></a><a href='#L307'>307</a>
-<a name='L308'></a><a href='#L308'>308</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<a name='L308'></a><a href='#L308'>308</a>
+<a name='L309'></a><a href='#L309'>309</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -677,7 +678,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const express = <span class="cstat-no" title="statement not covered" >require('express');</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const express = <span class="cstat-no" title="statement not covered" >require('express');</span>
 const { body, validationResult } = <span class="cstat-no" title="statement not covered" >require('express-validator');</span>
 const { authMiddleware } = <span class="cstat-no" title="statement not covered" >require('../middleware/auth');</span>
 const DiaryEntry = <span class="cstat-no" title="statement not covered" >require('../models/DiaryEntry');</span>
@@ -694,7 +696,7 @@ const router = <span class="cstat-no" title="statement not covered" >express.Rou
     const page = <span class="cstat-no" title="statement not covered" >parseInt(req.query.page) || 1;</span>
     const limit = <span class="cstat-no" title="statement not covered" >12;</span>
     const offset = <span class="cstat-no" title="statement not covered" >(page - 1) * limit;</span>
-    
+&nbsp;
 <span class="cstat-no" title="statement not covered" >    if (!searchTerm.trim()) {</span>
 <span class="cstat-no" title="statement not covered" >      return res.render('entries/search', {</span>
         title: 'Search Entries',
@@ -705,14 +707,14 @@ const router = <span class="cstat-no" title="statement not covered" >express.Rou
         hasMore: false
       });
     }
-    
+&nbsp;
     const entries = <span class="cstat-no" title="statement not covered" >await DiaryEntry.searchByUser(req.user.id, searchTerm, limit + 1, offset);</span>
     const hasMore = <span class="cstat-no" title="statement not covered" >entries.length &gt; limit;</span>
-    
+&nbsp;
 <span class="cstat-no" title="statement not covered" >    if (hasMore) {</span>
 <span class="cstat-no" title="statement not covered" >      entries.pop();</span>
     }
-    
+&nbsp;
 <span class="cstat-no" title="statement not covered" >    res.render('entries/search', {</span>
       title: 'Search Results',
       user: req.user,
@@ -736,7 +738,7 @@ const router = <span class="cstat-no" title="statement not covered" >express.Rou
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const tag = <span class="cstat-no" title="statement not covered" >decodeURIComponent(req.params.tag);</span>
     const entries = <span class="cstat-no" title="statement not covered" >await DiaryEntry.findByUserAndTag(req.user.id, tag);</span>
-    
+&nbsp;
 <span class="cstat-no" title="statement not covered" >    res.render('entries/view-tag', {</span>
       title: `Entries tagged: ${tag}`,
       user: req.user,
@@ -757,7 +759,7 @@ const router = <span class="cstat-no" title="statement not covered" >express.Rou
 <span class="cstat-no" title="statement not covered" >router.get('/date/:date', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const date = <span class="cstat-no" title="statement not covered" >req.params.date;</span>
-    
+&nbsp;
     // Validate date format (YYYY-MM-DD)
     const dateRegex = <span class="cstat-no" title="statement not covered" >/^\d{4}-\d{2}-\d{2}$/;</span>
 <span class="cstat-no" title="statement not covered" >    if (!dateRegex.test(date)) {</span>
@@ -765,7 +767,7 @@ const router = <span class="cstat-no" title="statement not covered" >express.Rou
     }
 &nbsp;
     const entries = <span class="cstat-no" title="statement not covered" >await DiaryEntry.findByUserAndDate(req.user.id, date);</span>
-    
+&nbsp;
 <span class="cstat-no" title="statement not covered" >    res.render('entries/view-date', {</span>
       title: 'Diary Entries',
       user: req.user,
@@ -788,7 +790,7 @@ const router = <span class="cstat-no" title="statement not covered" >express.Rou
 // Create new entry form
 <span class="cstat-no" title="statement not covered" >router.get('/new/:date', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {</span>
   const date = <span class="cstat-no" title="statement not covered" >req.params.date;</span>
-  
+&nbsp;
   // Validate date format
   const dateRegex = <span class="cstat-no" title="statement not covered" >/^\d{4}-\d{2}-\d{2}$/;</span>
 <span class="cstat-no" title="statement not covered" >  if (!dateRegex.test(date)) {</span>
@@ -811,7 +813,7 @@ const router = <span class="cstat-no" title="statement not covered" >express.Rou
 ], <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const errors = <span class="cstat-no" title="statement not covered" >validationResult(req);</span>
-    
+&nbsp;
 <span class="cstat-no" title="statement not covered" >    if (!errors.isEmpty()) {</span>
 <span class="cstat-no" title="statement not covered" >      return res.render('entries/create', {</span>
         title: 'New Diary Entry',
@@ -823,7 +825,7 @@ const router = <span class="cstat-no" title="statement not covered" >express.Rou
       });
     }
 &nbsp;
-    const entry = <span class="cstat-no" title="statement not covered" >await DiaryEntry.create({</span>
+<span class="cstat-no" title="statement not covered" >    await DiaryEntry.create({</span>
       user_id: req.user.id,
       title: req.body.title,
       content: req.body.content,
@@ -849,7 +851,7 @@ const router = <span class="cstat-no" title="statement not covered" >express.Rou
 <span class="cstat-no" title="statement not covered" >router.get('/:id', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const entry = <span class="cstat-no" title="statement not covered" >await DiaryEntry.findById(req.params.id);</span>
-    
+&nbsp;
 <span class="cstat-no" title="statement not covered" >    if (!entry || entry.user_id !== req.user.id) {</span>
 <span class="cstat-no" title="statement not covered" >      return res.status(404).render('error', {</span>
         title: '404 Not Found',
@@ -879,7 +881,7 @@ const router = <span class="cstat-no" title="statement not covered" >express.Rou
 <span class="cstat-no" title="statement not covered" >router.get('/:id/edit', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const entry = <span class="cstat-no" title="statement not covered" >await DiaryEntry.findById(req.params.id);</span>
-    
+&nbsp;
 <span class="cstat-no" title="statement not covered" >    if (!entry || entry.user_id !== req.user.id) {</span>
 <span class="cstat-no" title="statement not covered" >      return res.status(404).render('error', {</span>
         title: '404 Not Found',
@@ -910,7 +912,7 @@ const router = <span class="cstat-no" title="statement not covered" >express.Rou
 ], <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const entry = <span class="cstat-no" title="statement not covered" >await DiaryEntry.findById(req.params.id);</span>
-    
+&nbsp;
 <span class="cstat-no" title="statement not covered" >    if (!entry || entry.user_id !== req.user.id) {</span>
 <span class="cstat-no" title="statement not covered" >      return res.status(404).render('error', {</span>
         title: '404 Not Found',
@@ -920,7 +922,7 @@ const router = <span class="cstat-no" title="statement not covered" >express.Rou
     }
 &nbsp;
     const errors = <span class="cstat-no" title="statement not covered" >validationResult(req);</span>
-    
+&nbsp;
 <span class="cstat-no" title="statement not covered" >    if (!errors.isEmpty()) {</span>
 <span class="cstat-no" title="statement not covered" >      return res.render('entries/edit', {</span>
         title: 'Edit Diary Entry',
@@ -955,7 +957,7 @@ const router = <span class="cstat-no" title="statement not covered" >express.Rou
 <span class="cstat-no" title="statement not covered" >router.post('/:id/delete', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const entry = <span class="cstat-no" title="statement not covered" >await DiaryEntry.findById(req.params.id);</span>
-    
+&nbsp;
 <span class="cstat-no" title="statement not covered" >    if (!entry || entry.user_id !== req.user.id) {</span>
 <span class="cstat-no" title="statement not covered" >      return res.status(404).render('error', {</span>
         title: '404 Not Found',
@@ -984,14 +986,15 @@ function <span class="fstat-no" title="function not covered" >formatDateForDispl
   });
 }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >module.exports = router;</span></pre></td></tr></table></pre>
+<span class="cstat-no" title="statement not covered" >module.exports = router;</span>
+&nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-07-29T12:11:38.693Z
+                at 2025-08-01T09:39:01.968Z
             </div>
         <script src="../prettify.js"></script>
         <script>

@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="243" failures="0" errors="0" time="0.486">
+  <testsuite name="tests/models/DiaryEntry.test.js" errors="0" failures="0" skipped="0" timestamp="2025-08-01T09:41:07" time="0.158" tests="62">
+    <testcase classname="DiaryEntry Model › Constructor" name="should create a DiaryEntry instance with all properties" time="0.002">
+    </testcase>
+    <testcase classname="DiaryEntry Model › create()" name="should create entry with valid data" time="0.001">
+    </testcase>
+    <testcase classname="DiaryEntry Model › create()" name="should handle optional tags" time="0">
+    </testcase>
+    <testcase classname="DiaryEntry Model › create()" name="should handle empty tags" time="0">
+    </testcase>
+    <testcase classname="DiaryEntry Model › create()" name="should validate required fields" time="0.022">
+    </testcase>
+    <testcase classname="DiaryEntry Model › create()" name="should handle null tags correctly" time="0">
+    </testcase>
+    <testcase classname="DiaryEntry Model › create()" name="should throw error for invalid user_id" time="0">
+    </testcase>
+    <testcase classname="DiaryEntry Model › findById()" name="should return entry for valid ID" time="0.001">
+    </testcase>
+    <testcase classname="DiaryEntry Model › findById()" name="should return null for non-existent ID" time="0">
+    </testcase>
+    <testcase classname="DiaryEntry Model › findById()" name="should return null for invalid ID types" time="0">
+    </testcase>
+    <testcase classname="DiaryEntry Model › findByUserAndDate()" name="should return entries for specific date" time="0">
+    </testcase>
+    <testcase classname="DiaryEntry Model › findByUserAndDate()" name="should return empty array for date with no entries" time="0">
+    </testcase>
+    <testcase classname="DiaryEntry Model › findByUserAndDate()" name="should respect user isolation" time="0.001">
+    </testcase>
+    <testcase classname="DiaryEntry Model › findByUserAndDate()" name="should order entries by created_at ASC" time="0">
+    </testcase>
+    <testcase classname="DiaryEntry Model › findByUserAndDateRange()" name="should return entries within date range" time="0">
+    </testcase>
+    <testcase classname="DiaryEntry Model › findByUserAndDateRange()" name="should return empty array for range with no entries" time="0">
+    </testcase>
+    <testcase classname="DiaryEntry Model › findByUserAndDateRange()" name="should include boundary dates" time="0.001">
+    </testcase>
+    <testcase classname="DiaryEntry Model › findByUserAndDateRange()" name="should order by entry_date ASC, then created_at ASC" time="0">
+    </testcase>
+    <testcase classname="DiaryEntry Model › findByUser()" name="should return all user entries by default" time="0.008">
+    </testcase>
+    <testcase classname="DiaryEntry Model › findByUser()" name="should order by entry_date DESC, created_at DESC" time="0">
+    </testcase>
+    <testcase classname="DiaryEntry Model › findByUser()" name="should respect limit parameter" time="0">
+    </testcase>
+    <testcase classname="DiaryEntry Model › findByUser()" name="should respect offset parameter" time="0">
+    </testcase>
+    <testcase classname="DiaryEntry Model › findByUser()" name="should handle limit without offset" time="0">
+    </testcase>
+    <testcase classname="DiaryEntry Model › getEntryCounts()" name="should return correct entry counts for date range" time="0">
+    </testcase>
+    <testcase classname="DiaryEntry Model › getEntryCounts()" name="should return empty object for range with no entries" time="0.001">
+    </testcase>
+    <testcase classname="DiaryEntry Model › getEntryCounts()" name="should only include dates within range" time="0.002">
+    </testcase>
+    <testcase classname="DiaryEntry Model › update()" name="should update entry with valid data" time="0">
+    </testcase>
+    <testcase classname="DiaryEntry Model › update()" name="should handle null tags in update" time="0">
+    </testcase>
+    <testcase classname="DiaryEntry Model › update()" name="should throw error for unauthorized update" time="0.001">
+    </testcase>
+    <testcase classname="DiaryEntry Model › update()" name="should throw error for non-existent entry" time="0">
+    </testcase>
+    <testcase classname="DiaryEntry Model › update()" name="should update timestamp on modification" time="0">
+    </testcase>
+    <testcase classname="DiaryEntry Model › delete()" name="should delete entry successfully" time="0">
+    </testcase>
+    <testcase classname="DiaryEntry Model › delete()" name="should throw error for unauthorized delete" time="0">
+    </testcase>
+    <testcase classname="DiaryEntry Model › delete()" name="should throw error for non-existent entry" time="0.001">
+    </testcase>
+    <testcase classname="DiaryEntry Model › delete()" name="should handle double deletion gracefully" time="0">
+    </testcase>
+    <testcase classname="DiaryEntry Model › findByUserAndTag()" name="should find entries with specific tag" time="0">
+    </testcase>
+    <testcase classname="DiaryEntry Model › findByUserAndTag()" name="should return empty array for non-existent tag" time="0">
+    </testcase>
+    <testcase classname="DiaryEntry Model › findByUserAndTag()" name="should handle exact tag matching" time="0">
+    </testcase>
+    <testcase classname="DiaryEntry Model › findByUserAndTag()" name="should order by entry_date DESC, created_at DESC" time="0">
+    </testcase>
+    <testcase classname="DiaryEntry Model › searchByUser()" name="should search in title" time="0">
+    </testcase>
+    <testcase classname="DiaryEntry Model › searchByUser()" name="should search in content" time="0">
+    </testcase>
+    <testcase classname="DiaryEntry Model › searchByUser()" name="should search in tags" time="0">
+    </testcase>
+    <testcase classname="DiaryEntry Model › searchByUser()" name="should be case insensitive" time="0.001">
+    </testcase>
+    <testcase classname="DiaryEntry Model › searchByUser()" name="should respect limit parameter" time="0">
+    </testcase>
+    <testcase classname="DiaryEntry Model › searchByUser()" name="should respect offset parameter" time="0">
+    </testcase>
+    <testcase classname="DiaryEntry Model › searchByUser()" name="should return empty array for no matches" time="0">
+    </testcase>
+    <testcase classname="DiaryEntry Model › toJSON()" name="should return all properties" time="0.001">
+    </testcase>
+    <testcase classname="DiaryEntry Model › toJSON()" name="should handle null tags" time="0">
+    </testcase>
+    <testcase classname="DiaryEntry Model › getFormattedDate()" name="should format date correctly" time="0.005">
+    </testcase>
+    <testcase classname="DiaryEntry Model › getFormattedDate()" name="should handle different date formats" time="0">
+    </testcase>
+    <testcase classname="DiaryEntry Model › getFormattedCreatedAt()" name="should format created_at timestamp correctly" time="0.001">
+    </testcase>
+    <testcase classname="DiaryEntry Model › getTagsArray()" name="should return array of tags" time="0">
+    </testcase>
+    <testcase classname="DiaryEntry Model › getTagsArray()" name="should handle tags with spaces" time="0">
+    </testcase>
+    <testcase classname="DiaryEntry Model › getTagsArray()" name="should return empty array for null tags" time="0">
+    </testcase>
+    <testcase classname="DiaryEntry Model › getTagsArray()" name="should return empty array for empty tags" time="0.001">
+    </testcase>
+    <testcase classname="DiaryEntry Model › getTagsArray()" name="should filter out empty tags" time="0">
+    </testcase>
+    <testcase classname="DiaryEntry Model › formatTagsForStorage()" name="should format tags correctly for storage" time="0">
+    </testcase>
+    <testcase classname="DiaryEntry Model › formatTagsForStorage()" name="should return null for empty string" time="0">
+    </testcase>
+    <testcase classname="DiaryEntry Model › formatTagsForStorage()" name="should return null for null input" time="0">
+    </testcase>
+    <testcase classname="DiaryEntry Model › formatTagsForStorage()" name="should return null for whitespace only" time="0">
+    </testcase>
+    <testcase classname="DiaryEntry Model › formatTagsForStorage()" name="should filter out empty tags" time="0">
+    </testcase>
+    <testcase classname="DiaryEntry Model › formatTagsForStorage()" name="should return null if all tags are empty after filtering" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="tests/middleware/auth.test.js" errors="0" failures="0" skipped="0" timestamp="2025-08-01T09:41:07" time="0.06" tests="23">
+    <testcase classname="Authentication Middleware › authMiddleware" name="should redirect to login when no token is provided" time="0.001">
+    </testcase>
+    <testcase classname="Authentication Middleware › authMiddleware" name="should not set returnTo for auth routes" time="0">
+    </testcase>
+    <testcase classname="Authentication Middleware › authMiddleware" name="should not set returnTo for POST requests" time="0">
+    </testcase>
+    <testcase classname="Authentication Middleware › authMiddleware" name="should successfully authenticate with valid token and user" time="0.001">
+    </testcase>
+    <testcase classname="Authentication Middleware › authMiddleware" name="should redirect to login when token is invalid" time="0.01">
+    </testcase>
+    <testcase classname="Authentication Middleware › authMiddleware" name="should redirect to login when user does not exist" time="0">
+    </testcase>
+    <testcase classname="Authentication Middleware › authMiddleware" name="should refresh token when it is close to expiring" time="0.001">
+    </testcase>
+    <testcase classname="Authentication Middleware › authMiddleware" name="should set secure cookie in production environment" time="0">
+    </testcase>
+    <testcase classname="Authentication Middleware › authMiddleware" name="should not refresh token when it is not close to expiring" time="0">
+    </testcase>
+    <testcase classname="Authentication Middleware › authMiddleware" name="should handle database errors" time="0.001">
+    </testcase>
+    <testcase classname="Authentication Middleware › authMiddleware" name="should handle JWT expired error" time="0.001">
+    </testcase>
+    <testcase classname="Authentication Middleware › authMiddleware" name="should handle malformed JWT error" time="0.001">
+    </testcase>
+    <testcase classname="Authentication Middleware › guestOnly middleware" name="should call next when no token is provided" time="0">
+    </testcase>
+    <testcase classname="Authentication Middleware › guestOnly middleware" name="should redirect to dashboard when valid token is provided" time="0">
+    </testcase>
+    <testcase classname="Authentication Middleware › guestOnly middleware" name="should clear invalid token and call next" time="0">
+    </testcase>
+    <testcase classname="Authentication Middleware › guestOnly middleware" name="should handle expired token gracefully" time="0.001">
+    </testcase>
+    <testcase classname="Authentication Middleware › guestOnly middleware" name="should handle malformed token gracefully" time="0">
+    </testcase>
+    <testcase classname="Authentication Middleware › guestOnly middleware" name="should handle empty token string" time="0.001">
+    </testcase>
+    <testcase classname="Authentication Middleware › guestOnly middleware" name="should handle null token" time="0">
+    </testcase>
+    <testcase classname="Authentication Middleware › integration scenarios" name="should work with session management in authMiddleware" time="0">
+    </testcase>
+    <testcase classname="Authentication Middleware › integration scenarios" name="should preserve existing session data" time="0">
+    </testcase>
+    <testcase classname="Authentication Middleware › integration scenarios" name="should handle undefined session gracefully" time="0">
+    </testcase>
+    <testcase classname="Authentication Middleware › integration scenarios" name="should work correctly when switching from guest to authenticated user" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="tests/utils/calendar.test.js" errors="0" failures="0" skipped="0" timestamp="2025-08-01T09:41:07" time="0.033" tests="35">
+    <testcase classname="Calendar Utilities › monthNames and dayNames constants" name="should have correct month names" time="0.001">
+    </testcase>
+    <testcase classname="Calendar Utilities › monthNames and dayNames constants" name="should have correct day names" time="0.001">
+    </testcase>
+    <testcase classname="Calendar Utilities › getCalendarData" name="should generate correct calendar data for January 2024" time="0">
+    </testcase>
+    <testcase classname="Calendar Utilities › getCalendarData" name="should generate correct calendar data for February 2024 (leap year)" time="0">
+    </testcase>
+    <testcase classname="Calendar Utilities › getCalendarData" name="should generate correct calendar data for February 2023 (non-leap year)" time="0">
+    </testcase>
+    <testcase classname="Calendar Utilities › getCalendarData" name="should have correct week structure" time="0.001">
+    </testcase>
+    <testcase classname="Calendar Utilities › getCalendarData" name="should correctly place days in weeks" time="0">
+    </testcase>
+    <testcase classname="Calendar Utilities › getCalendarData" name="should generate correct date strings" time="0">
+    </testcase>
+    <testcase classname="Calendar Utilities › getCalendarData" name="should handle month with different starting days" time="0.001">
+    </testcase>
+    <testcase classname="Calendar Utilities › isToday" name="should return true for current date" time="0">
+    </testcase>
+    <testcase classname="Calendar Utilities › isToday" name="should return false for different date" time="0">
+    </testcase>
+    <testcase classname="Calendar Utilities › isToday" name="should return false for different month" time="0.001">
+    </testcase>
+    <testcase classname="Calendar Utilities › isToday" name="should return false for different year" time="0">
+    </testcase>
+    <testcase classname="Calendar Utilities › isToday" name="should handle edge cases" time="0">
+    </testcase>
+    <testcase classname="Calendar Utilities › formatDateString" name="should format date correctly with zero padding" time="0">
+    </testcase>
+    <testcase classname="Calendar Utilities › formatDateString" name="should handle single-digit months and days" time="0.001">
+    </testcase>
+    <testcase classname="Calendar Utilities › formatDateString" name="should handle edge cases" time="0">
+    </testcase>
+    <testcase classname="Calendar Utilities › formatDateString" name="should handle month index correctly" time="0">
+    </testcase>
+    <testcase classname="Calendar Utilities › parseMonthYear" name="should parse valid month and year strings" time="0">
+    </testcase>
+    <testcase classname="Calendar Utilities › parseMonthYear" name="should parse string numbers correctly" time="0">
+    </testcase>
+    <testcase classname="Calendar Utilities › parseMonthYear" name="should return null for invalid month (too high)" time="0">
+    </testcase>
+    <testcase classname="Calendar Utilities › parseMonthYear" name="should return null for invalid month (negative)" time="0">
+    </testcase>
+    <testcase classname="Calendar Utilities › parseMonthYear" name="should return null for invalid year (too low)" time="0">
+    </testcase>
+    <testcase classname="Calendar Utilities › parseMonthYear" name="should return null for invalid year (too high)" time="0">
+    </testcase>
+    <testcase classname="Calendar Utilities › parseMonthYear" name="should return null for non-numeric month" time="0">
+    </testcase>
+    <testcase classname="Calendar Utilities › parseMonthYear" name="should return null for non-numeric year" time="0">
+    </testcase>
+    <testcase classname="Calendar Utilities › parseMonthYear" name="should handle edge cases for valid range" time="0">
+    </testcase>
+    <testcase classname="Calendar Utilities › parseMonthYear" name="should handle empty strings" time="0">
+    </testcase>
+    <testcase classname="Calendar Utilities › getNavigationData" name="should calculate previous and next month correctly" time="0">
+    </testcase>
+    <testcase classname="Calendar Utilities › getNavigationData" name="should handle year transition for January" time="0">
+    </testcase>
+    <testcase classname="Calendar Utilities › getNavigationData" name="should handle year transition for December" time="0.001">
+    </testcase>
+    <testcase classname="Calendar Utilities › getNavigationData" name="should handle edge years" time="0">
+    </testcase>
+    <testcase classname="Calendar Utilities › getNavigationData" name="should work for all months" time="0.003">
+    </testcase>
+    <testcase classname="Calendar Utilities › integration scenarios" name="should work together for calendar generation workflow" time="0.001">
+    </testcase>
+    <testcase classname="Calendar Utilities › integration scenarios" name="should handle leap year calculations correctly" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="tests/middleware/security.test.js" errors="0" failures="0" skipped="0" timestamp="2025-08-01T09:41:07" time="0.024" tests="34">
+    <testcase classname="Security Middleware › securityHeaders" name="should set all security headers correctly" time="0.001">
+    </testcase>
+    <testcase classname="Security Middleware › securityHeaders" name="should set Content Security Policy header" time="0">
+    </testcase>
+    <testcase classname="Security Middleware › securityHeaders" name="should call next after setting headers" time="0">
+    </testcase>
+    <testcase classname="Security Middleware › securityHeaders" name="should work with different request/response objects" time="0">
+    </testcase>
+    <testcase classname="Security Middleware › rateLimiter" name="should allow first request from new IP" time="0.001">
+    </testcase>
+    <testcase classname="Security Middleware › rateLimiter" name="should allow requests within rate limit" time="0">
+    </testcase>
+    <testcase classname="Security Middleware › rateLimiter" name="should block requests exceeding rate limit" time="0">
+    </testcase>
+    <testcase classname="Security Middleware › rateLimiter" name="should reset attempts after time window expires" time="0.001">
+    </testcase>
+    <testcase classname="Security Middleware › rateLimiter" name="should use different counters for different IPs" time="0">
+    </testcase>
+    <testcase classname="Security Middleware › rateLimiter" name="should use connection.remoteAddress as fallback for IP" time="0">
+    </testcase>
+    <testcase classname="Security Middleware › rateLimiter" name="should use default values for maxAttempts and windowMs" time="0">
+    </testcase>
+    <testcase classname="Security Middleware › rateLimiter" name="should handle custom maxAttempts and windowMs" time="0">
+    </testcase>
+    <testcase classname="Security Middleware › csrfProtection" name="should allow GET requests without CSRF check" time="0">
+    </testcase>
+    <testcase classname="Security Middleware › csrfProtection" name="should allow HEAD requests without CSRF check" time="0">
+    </testcase>
+    <testcase classname="Security Middleware › csrfProtection" name="should allow OPTIONS requests without CSRF check" time="0">
+    </testcase>
+    <testcase classname="Security Middleware › csrfProtection" name="should block POST request without CSRF token" time="0.001">
+    </testcase>
+    <testcase classname="Security Middleware › csrfProtection" name="should block POST request with invalid CSRF token" time="0">
+    </testcase>
+    <testcase classname="Security Middleware › csrfProtection" name="should allow POST request with valid CSRF token in body" time="0">
+    </testcase>
+    <testcase classname="Security Middleware › csrfProtection" name="should allow POST request with valid CSRF token in header" time="0">
+    </testcase>
+    <testcase classname="Security Middleware › csrfProtection" name="should prioritize body token over header token" time="0">
+    </testcase>
+    <testcase classname="Security Middleware › csrfProtection" name="should handle missing session" time="0">
+    </testcase>
+    <testcase classname="Security Middleware › csrfProtection" name="should include user information in error response when authenticated" time="0.001">
+    </testcase>
+    <testcase classname="Security Middleware › csrfProtection" name="should work with PUT requests" time="0">
+    </testcase>
+    <testcase classname="Security Middleware › csrfProtection" name="should work with DELETE requests" time="0">
+    </testcase>
+    <testcase classname="Security Middleware › generateCsrfToken" name="should generate new CSRF token when session has none" time="0">
+    </testcase>
+    <testcase classname="Security Middleware › generateCsrfToken" name="should not overwrite existing CSRF token" time="0">
+    </testcase>
+    <testcase classname="Security Middleware › generateCsrfToken" name="should handle undefined session" time="0">
+    </testcase>
+    <testcase classname="Security Middleware › generateCsrfToken" name="should handle null session" time="0">
+    </testcase>
+    <testcase classname="Security Middleware › generateCsrfToken" name="should always call next" time="0">
+    </testcase>
+    <testcase classname="Security Middleware › generateCsrfToken" name="should preserve existing session data" time="0.001">
+    </testcase>
+    <testcase classname="Security Middleware › integration scenarios" name="should work together - generateCsrfToken then csrfProtection" time="0">
+    </testcase>
+    <testcase classname="Security Middleware › integration scenarios" name="should handle rate limiting with security headers" time="0.001">
+    </testcase>
+    <testcase classname="Security Middleware › integration scenarios" name="should handle complex security flow" time="0">
+    </testcase>
+    <testcase classname="Security Middleware › integration scenarios" name="should handle security failures gracefully" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="tests/middleware/errorHandler.test.js" errors="0" failures="0" skipped="0" timestamp="2025-08-01T09:41:07" time="0.032" tests="27">
+    <testcase classname="Error Handler Middleware › errorHandler" name="should handle generic error with default values" time="0.006">
+    </testcase>
+    <testcase classname="Error Handler Middleware › errorHandler" name="should handle error with custom status and message" time="0">
+    </testcase>
+    <testcase classname="Error Handler Middleware › errorHandler" name="should handle ValidationError" time="0">
+    </testcase>
+    <testcase classname="Error Handler Middleware › errorHandler" name="should handle UnauthorizedError" time="0.001">
+    </testcase>
+    <testcase classname="Error Handler Middleware › errorHandler" name="should handle JsonWebTokenError" time="0">
+    </testcase>
+    <testcase classname="Error Handler Middleware › errorHandler" name="should handle SQLITE_CONSTRAINT error with UNIQUE constraint" time="0">
+    </testcase>
+    <testcase classname="Error Handler Middleware › errorHandler" name="should handle SQLITE_CONSTRAINT error without UNIQUE constraint" time="0">
+    </testcase>
+    <testcase classname="Error Handler Middleware › errorHandler" name="should handle 404 error with custom message" time="0.001">
+    </testcase>
+    <testcase classname="Error Handler Middleware › errorHandler" name="should handle 404 error with default message" time="0">
+    </testcase>
+    <testcase classname="Error Handler Middleware › errorHandler" name="should include user information when user is authenticated" time="0.001">
+    </testcase>
+    <testcase classname="Error Handler Middleware › errorHandler" name="should handle AJAX request with JSON response" time="0">
+    </testcase>
+    <testcase classname="Error Handler Middleware › errorHandler" name="should handle request accepting JSON with JSON response" time="0">
+    </testcase>
+    <testcase classname="Error Handler Middleware › errorHandler" name="should handle mixed accept header with JSON" time="0">
+    </testcase>
+    <testcase classname="Error Handler Middleware › errorHandler" name="should exclude stack trace in production environment" time="0">
+    </testcase>
+    <testcase classname="Error Handler Middleware › errorHandler" name="should include empty error object in production for render" time="0">
+    </testcase>
+    <testcase classname="Error Handler Middleware › errorHandler" name="should handle error without message" time="0">
+    </testcase>
+    <testcase classname="Error Handler Middleware › errorHandler" name="should handle error without stack trace" time="0">
+    </testcase>
+    <testcase classname="Error Handler Middleware › errorHandler" name="should handle different server error status codes" time="0">
+    </testcase>
+    <testcase classname="Error Handler Middleware › errorHandler" name="should handle status codes below 500 with original message" time="0.001">
+    </testcase>
+    <testcase classname="Error Handler Middleware › errorHandler" name="should handle undefined headers gracefully" time="0">
+    </testcase>
+    <testcase classname="Error Handler Middleware › errorHandler" name="should handle null headers gracefully" time="0">
+    </testcase>
+    <testcase classname="Error Handler Middleware › notFoundHandler" name="should create 404 error and call next" time="0">
+    </testcase>
+    <testcase classname="Error Handler Middleware › notFoundHandler" name="should create Error instance" time="0">
+    </testcase>
+    <testcase classname="Error Handler Middleware › notFoundHandler" name="should work with different request objects" time="0">
+    </testcase>
+    <testcase classname="Error Handler Middleware › integration scenarios" name="should work together - notFoundHandler creates error, errorHandler processes it" time="0.001">
+    </testcase>
+    <testcase classname="Error Handler Middleware › integration scenarios" name="should handle complex error scenarios" time="0">
+    </testcase>
+    <testcase classname="Error Handler Middleware › integration scenarios" name="should preserve custom error properties" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="tests/utils/render.test.js" errors="0" failures="0" skipped="0" timestamp="2025-08-01T09:41:07" time="0.026" tests="13">
+    <testcase classname="Render Utilities › renderWithLayout" name="should render template with layout successfully" time="0">
+    </testcase>
+    <testcase classname="Render Utilities › renderWithLayout" name="should render template with empty data" time="0.001">
+    </testcase>
+    <testcase classname="Render Utilities › renderWithLayout" name="should preserve data properties in layout render" time="0">
+    </testcase>
+    <testcase classname="Render Utilities › renderWithLayout" name="should reject when template rendering fails" time="0.005">
+    </testcase>
+    <testcase classname="Render Utilities › renderWithLayout" name="should reject when layout rendering fails" time="0.001">
+    </testcase>
+    <testcase classname="Render Utilities › renderWithLayout" name="should handle template rendering with complex data structures" time="0">
+    </testcase>
+    <testcase classname="Render Utilities › renderWithLayout" name="should handle undefined data parameter" time="0">
+    </testcase>
+    <testcase classname="Render Utilities › renderWithLayout" name="should handle null data parameter" time="0">
+    </testcase>
+    <testcase classname="Render Utilities › renderWithLayout" name="should handle empty string template" time="0.001">
+    </testcase>
+    <testcase classname="Render Utilities › renderWithLayout" name="should preserve function properties in data" time="0">
+    </testcase>
+    <testcase classname="Render Utilities › renderWithLayout" name="should handle template names with paths" time="0">
+    </testcase>
+    <testcase classname="Render Utilities › error handling edge cases" name="should handle synchronous errors in template rendering" time="0.001">
+    </testcase>
+    <testcase classname="Render Utilities › error handling edge cases" name="should handle template rendering with circular reference in data" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="tests/utils/auth.test.js" errors="0" failures="0" skipped="0" timestamp="2025-08-01T09:41:07" time="0.03" tests="18">
+    <testcase classname="Auth Utilities › hashPassword" name="should hash password with correct salt rounds" time="0">
+    </testcase>
+    <testcase classname="Auth Utilities › hashPassword" name="should throw error when bcrypt fails" time="0.004">
+    </testcase>
+    <testcase classname="Auth Utilities › hashPassword" name="should handle empty password" time="0">
+    </testcase>
+    <testcase classname="Auth Utilities › comparePassword" name="should return true for matching password" time="0">
+    </testcase>
+    <testcase classname="Auth Utilities › comparePassword" name="should return false for non-matching password" time="0">
+    </testcase>
+    <testcase classname="Auth Utilities › comparePassword" name="should throw error when bcrypt compare fails" time="0.001">
+    </testcase>
+    <testcase classname="Auth Utilities › comparePassword" name="should handle empty inputs" time="0">
+    </testcase>
+    <testcase classname="Auth Utilities › generateToken" name="should generate token with correct payload and options" time="0">
+    </testcase>
+    <testcase classname="Auth Utilities › generateToken" name="should generate token with string userId" time="0">
+    </testcase>
+    <testcase classname="Auth Utilities › generateToken" name="should use JWT_SECRET from environment" time="0.001">
+    </testcase>
+    <testcase classname="Auth Utilities › verifyToken" name="should return decoded payload for valid token" time="0">
+    </testcase>
+    <testcase classname="Auth Utilities › verifyToken" name="should return null for invalid token" time="0.002">
+    </testcase>
+    <testcase classname="Auth Utilities › verifyToken" name="should return null for expired token" time="0.001">
+    </testcase>
+    <testcase classname="Auth Utilities › verifyToken" name="should return null for malformed token" time="0">
+    </testcase>
+    <testcase classname="Auth Utilities › verifyToken" name="should use JWT_SECRET from environment" time="0">
+    </testcase>
+    <testcase classname="Auth Utilities › verifyToken" name="should handle empty token" time="0.001">
+    </testcase>
+    <testcase classname="Auth Utilities › verifyToken" name="should handle null token" time="0">
+    </testcase>
+    <testcase classname="Auth Utilities › integration scenarios" name="should work with real bcrypt and jwt flow simulation" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="tests/models/User.test.js" errors="0" failures="0" skipped="0" timestamp="2025-08-01T09:41:07" time="0.043" tests="27">
+    <testcase classname="User Model › Constructor" name="should create a User instance with all properties" time="0.001">
+    </testcase>
+    <testcase classname="User Model › create()" name="should create user with valid data" time="0">
+    </testcase>
+    <testcase classname="User Model › create()" name="should hash password before storage" time="0">
+    </testcase>
+    <testcase classname="User Model › create()" name="should throw error for duplicate email" time="0.01">
+    </testcase>
+    <testcase classname="User Model › create()" name="should throw error for missing required fields" time="0">
+    </testcase>
+    <testcase classname="User Model › create()" name="should throw error when hashPassword fails" time="0.001">
+    </testcase>
+    <testcase classname="User Model › findByEmail()" name="should return user for valid email" time="0">
+    </testcase>
+    <testcase classname="User Model › findByEmail()" name="should return null for non-existent email" time="0">
+    </testcase>
+    <testcase classname="User Model › findByEmail()" name="should return null for empty email" time="0">
+    </testcase>
+    <testcase classname="User Model › findByEmail()" name="should handle case sensitivity correctly" time="0">
+    </testcase>
+    <testcase classname="User Model › findById()" name="should return user for valid ID" time="0">
+    </testcase>
+    <testcase classname="User Model › findById()" name="should return null for non-existent ID" time="0">
+    </testcase>
+    <testcase classname="User Model › findById()" name="should return null for invalid ID types" time="0">
+    </testcase>
+    <testcase classname="User Model › findById()" name="should return null for null ID" time="0">
+    </testcase>
+    <testcase classname="User Model › validatePassword()" name="should return true for correct password" time="0">
+    </testcase>
+    <testcase classname="User Model › validatePassword()" name="should return false for incorrect password" time="0">
+    </testcase>
+    <testcase classname="User Model › validatePassword()" name="should handle empty password" time="0">
+    </testcase>
+    <testcase classname="User Model › validatePassword()" name="should handle null password" time="0">
+    </testcase>
+    <testcase classname="User Model › validatePassword()" name="should propagate comparison errors" time="0">
+    </testcase>
+    <testcase classname="User Model › toJSON()" name="should exclude password from JSON serialization" time="0.001">
+    </testcase>
+    <testcase classname="User Model › toJSON()" name="should handle user with minimal data" time="0">
+    </testcase>
+    <testcase classname="User Model › toJSON()" name="should preserve all properties except password" time="0">
+    </testcase>
+    <testcase classname="User Model › Error Handling" name="should handle database connection errors in findByEmail" time="0">
+    </testcase>
+    <testcase classname="User Model › Error Handling" name="should handle database connection errors in findById" time="0">
+    </testcase>
+    <testcase classname="User Model › Error Handling" name="should handle database connection errors in create" time="0">
+    </testcase>
+    <testcase classname="User Model › Integration Tests" name="should create, find, and validate user in sequence" time="0.001">
+    </testcase>
+    <testcase classname="User Model › Integration Tests" name="should maintain data integrity across operations" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="tests/setup.test.js" errors="0" failures="0" skipped="0" timestamp="2025-08-01T09:41:07" time="0.015" tests="4">
+    <testcase classname="Test Setup Verification" name="should connect to in-memory database" time="0">
+    </testcase>
+    <testcase classname="Test Setup Verification" name="should have users table" time="0">
+    </testcase>
+    <testcase classname="Test Setup Verification" name="should have diary_entries table" time="0">
+    </testcase>
+    <testcase classname="Test Setup Verification" name="should have empty tables initially" time="0">
+    </testcase>
+  </testsuite>
+</testsuites>

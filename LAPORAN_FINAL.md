@@ -233,3 +233,103 @@ claude membuat beberapa langkah sebagai berikut
 ```sh
 proceed
 ``` 
+
+Terjadi error sat pipeline jalan di github action:
+```sh
+Please fix this error, this error occured on github actions
+Here is the error:
+
+Run SonarSource/sonarcloud-github-action@master
+Run echo "::warning title=SonarScanner::This action is deprecated and will be removed in a future release. Please use the sonarqube-scan-action action instead. The sonarqube-scan-action is a drop-in replacement for this action."
+Warning: This action is deprecated and will be removed in a future release. Please use the sonarqube-scan-action action instead. The sonarqube-scan-action is a drop-in replacement for this action.
+Run SonarSource/sonarqube-scan-action@v5.0.0
+Run ${GITHUB_ACTION_PATH}/scripts/sanity-checks.sh
+Run actions/cache@v4
+Cache not found for input keys: sonar-scanner-cli-7.0.2.4839-Linux-X64
+Run ${GITHUB_ACTION_PATH}/scripts/install-sonar-scanner-cli.sh
++ mkdir -p /home/runner/work/_temp/sonarscanner
++ cd /home/runner/work/_temp/sonarscanner
++ SCANNER_FILE_NAME=sonar-scanner-cli-7.0.2.4839-linux-x64.zip
++ SCANNER_URI=https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-7.0.2.4839-linux-x64.zip
++ command -v wget
++ wget --no-verbose --user-agent=sonarqube-scan-action https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-7.0.2.4839-linux-x64.zip
+2025-08-01 09:32:13 URL:https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-7.0.2.4839-linux-x64.zip [57688416/57688416] -> "sonar-scanner-cli-7.0.2.4839-linux-x64.zip" [1]
++ unzip -q -o sonar-scanner-cli-7.0.2.4839-linux-x64.zip
++ SCANNER_UNZIP_FOLDER=sonar-scanner-7.0.2.4839-linux-x64
++ SCANNER_LOCAL_FOLDER=/home/runner/work/_temp/sonar-scanner-cli-7.0.2.4839-Linux-X64
++ '[' -d /home/runner/work/_temp/sonar-scanner-cli-7.0.2.4839-Linux-X64 ']'
++ mv -f sonar-scanner-7.0.2.4839-linux-x64 /home/runner/work/_temp/sonar-scanner-cli-7.0.2.4839-Linux-X64
+Run echo "${RUNNER_TEMP}/sonar-scanner-cli-7.0.2.4839-Linux-X64/bin" >> $GITHUB_PATH
+Run ${GITHUB_ACTION_PATH}/scripts/run-sonar-scanner-cli.sh 
++ sonar-scanner
+09:32:14.945 INFO  Scanner configuration file: /home/runner/work/_temp/sonar-scanner-cli-7.0.2.4839-Linux-X64/conf/sonar-scanner.properties
+09:32:14.948 INFO  Project root configuration file: /home/runner/work/binar-diary-books/binar-diary-books/sonar-project.properties
+09:32:14.964 INFO  SonarScanner CLI 7.0.2.4839
+09:32:14.965 INFO  Java 17.0.13 Eclipse Adoptium (64-bit)
+09:32:14.966 INFO  Linux 6.11.0-1018-azure amd64
+09:32:14.992 INFO  User cache: /home/runner/.sonar/cache
+09:32:15.627 INFO  JRE provisioning: os[linux], arch[x86_64]
+09:32:18.066 INFO  Communicating with SonarQube Cloud
+09:32:18.322 INFO  Starting SonarScanner Engine...
+09:32:18.323 INFO  Java 17.0.11 Eclipse Adoptium (64-bit)
+09:32:19.196 INFO  Load global settings
+09:32:19.899 INFO  Load global settings (done) | time=705ms
+09:32:19.902 INFO  Server id: 1BD809FA-AWHW8ct9-T_TB3XqouNu
+09:32:20.040 INFO  Loading required plugins
+09:32:20.040 INFO  Load plugins index
+09:32:20.203 INFO  Load plugins index (done) | time=163ms
+09:32:27.909 INFO  SonarJasmin relies on SonarSecurity to define the JS/TS security rule repositories.
+09:32:28.407 INFO  Sensor HTML [web]
+09:32:28.410 INFO  Sensor HTML [web] (done) | time=3ms
+09:32:28.411 INFO  Sensor JaCoCo XML Report Importer [jacoco]
+09:32:28.411 INFO  'sonar.coverage.jacoco.xmlReportPaths' is not defined. Using default locations: target/site/jacoco/jacoco.xml,target/site/jacoco-it/jacoco.xml,build/reports/jacoco/test/jacocoTestReport.xml
+09:32:28.411 INFO  No report imported, no coverage information will be imported by JaCoCo XML Report Importer
+09:32:28.414 INFO  Sensor JaCoCo XML Report Importer [jacoco] (done) | time=1ms
+09:32:28.414 INFO  Sensor IaC Docker Sensor [iac]
+09:32:28.486 INFO  0 source files to be analyzed
+09:32:28.491 INFO  0/0 source files have been analyzed
+09:32:28.492 INFO  Sensor IaC Docker Sensor [iac] (done) | time=80ms
+09:32:28.492 INFO  Sensor Java Config Sensor [iac]
+09:32:28.505 INFO  0 source files to be analyzed
+09:32:28.505 INFO  0/0 source files have been analyzed
+09:32:28.506 INFO  Sensor Java Config Sensor [iac] (done) | time=13ms
+09:32:28.506 INFO  Sensor JavaScript/TypeScript analysis [javascript]
+09:32:28.740 INFO  Detected os: Linux arch: amd64 alpine: false. Platform: LINUX_X64
+09:32:28.741 INFO  Deploy location /home/runner/.sonar/js/node-runtime, tagetRuntime: /home/runner/.sonar/js/node-runtime/node,  version: /home/runner/.sonar/js/node-runtime/version.txt
+09:32:31.724 INFO  Configured Node.js --max-old-space-size=4096.
+09:32:31.724 INFO  Using embedded Node.js runtime.
+09:32:31.725 INFO  Using Node.js executable: '/home/runner/.sonar/js/node-runtime/node'.
+09:32:33.164 INFO  Memory configuration: OS (15995 MB), Node.js (4144 MB).
+09:32:33.218 INFO  WebSocket client connected on /ws
+09:32:33.220 INFO  Plugin version: [11.2.0.34013]
+09:32:34.590 INFO  Using generated tsconfig.json file using wildcards /tmp/tsconfig-X3R845.json
+09:32:34.596 INFO  Found 1 tsconfig.json file(s): [/tmp/tsconfig-X3R845.json]
+09:32:38.383 INFO  29 source files to be analyzed
+09:32:38.384 INFO  Creating TypeScript program
+09:32:38.384 INFO  TypeScript(5.8.3) configuration file /tmp/tsconfig-X3R845.json
+09:32:38.384 INFO  29/29 source files have been analyzed
+09:32:38.409 INFO  Done analysis
+09:32:38.411 INFO  Hit the cache for 0 out of 29
+09:32:38.412 INFO  Miss the cache for 29 out of 29: ANALYSIS_MODE_INELIGIBLE [29/29]
+09:32:38.413 INFO  Sensor JavaScript/TypeScript analysis [javascript] (done) | time=9908ms
+09:32:38.415 INFO  Sensor CSS Rules [javascript]
+09:32:38.416 INFO  No CSS, PHP, HTML or VueJS files are found in the project. CSS analysis is skipped.
+09:32:38.419 INFO  Sensor CSS Rules [javascript] (done) | time=2ms
+09:32:38.419 INFO  Sensor JavaScript/TypeScript Coverage [javascript]
+09:32:38.419 INFO  Analysing [/home/runner/work/binar-diary-books/binar-diary-books/coverage/lcov.info]
+09:32:38.434 INFO  Sensor JavaScript/TypeScript Coverage [javascript] (done) | time=18ms
+09:32:38.436 INFO  Sensor Serverless configuration file sensor [security]
+09:32:38.437 INFO  0 Serverless function entries were found in the project
+09:32:38.437 INFO  0 Serverless function handlers were kept as entrypoints
+09:32:38.437 INFO  Sensor Serverless configuration file sensor [security] (done) | time=2ms
+09:32:38.439 INFO  Sensor AWS SAM template file sensor [security]
+09:32:38.440 INFO  Sensor AWS SAM template file sensor [security] (done) | time=2ms
+09:32:38.441 INFO  Sensor AWS SAM Inline template file sensor [security]
+09:32:38.441 INFO  Sensor AWS SAM Inline template file sensor [security] (done) | time=1ms
+09:32:38.442 INFO  Sensor Generic Test Executions Report
+09:32:38.442 INFO  Parsing /home/runner/work/binar-diary-books/binar-diary-books/coverage/test-report.xml
+09:32:38.597 ERROR Error during parsing of generic test execution report '/home/runner/work/binar-diary-books/binar-diary-books/coverage/test-report.xml'. Look at the SonarQube documentation to know the expected XML format.
+09:32:38.929 INFO  EXECUTION FAILURE
+09:32:38.930 INFO  Total time: 23.987s
+Error: Process completed with exit code 3.
+```
