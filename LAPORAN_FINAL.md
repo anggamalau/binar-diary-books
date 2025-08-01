@@ -26,4 +26,39 @@ Berikut adalah rekomendasi plan dari claude ai:
 proceed the plan
 ```
 
+Masih terjadi error saat deployment, saya minta claude ai untuk mengecek
+```sh
+why is this error happend on github actions\
+  Run railway up
+    railway up
+    shell: /usr/bin/bash -e {0}
+    env:
+      RAILWAY_TOKEN: ***
+  Project Token not found
+  Error: Process completed with exit code 1.
+```
+
+Claude ai menyarankan untuk mengubah yml pipeline dan menambahkan konfigurasi yang kurang di railway
+```sh
+Proceed the solution
+```
+
+Masih terjadi error di pipeline deployment, selanjutnya saya minta claude untuk mencari tahu penyebab errornya
+
+```sh
+Error still occured on github actions pipeline, please fix it.
+Here is the error:
+
+Run railway up
+  railway up
+  shell: /usr/bin/bash -e {0}
+  env:
+    RAILWAY_TOKEN: ***
+    RAILWAY_PROJECT_ID: ***
+    RAILWAY_SERVICE_ID: ***
+  
+Multiple services found. Please specify a service via the `--service` flag.
+Error: Process completed with exit code 1.
+```
+
 Selanjutnya saya setup env di railway, dan menunggu deployment ke railway melalui github actions

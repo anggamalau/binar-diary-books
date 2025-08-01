@@ -6,7 +6,7 @@ You need to add the following secrets to your GitHub repository:
 
 1. **RAILWAY_TOKEN** (you already have this)
 2. **RAILWAY_PROJECT_ID** 
-3. **RAILWAY_SERVICE_ID**
+3. **RAILWAY_SERVICE_ID** (this will be used with the --service flag)
 
 ## How to Get Your Railway Project and Service IDs
 
